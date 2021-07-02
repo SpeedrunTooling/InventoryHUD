@@ -1,0 +1,208 @@
+body {
+	background-color: transparent;
+	color: #ffffff;
+	font-family: "Courier Prime", monospace;
+	font-weight: 500;
+}
+
+img {
+	position: relative;
+	width: 100%;
+	top: -5px;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+/* EKG LAYER */
+
+#srtQueryData {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#inventoryRER {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: calc(4 * 86px);
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#currenthp {
+	position: absolute;
+	top: 135px;
+	left: 0px;
+	padding-left: 10px;
+}
+
+#darank {
+	position: absolute;
+	font-size: 16px;
+	top: 165px;
+	padding-left: 10px;
+}
+
+#score {
+	position: absolute;
+	font-size: 16px;
+	top: 165px;
+	right: 0px;
+	padding-right: 10px;
+}
+
+/* ENEMY HP BAR LAYER */
+
+.enemyhp {
+	position: relative;
+	top: 0px;
+	left: -1px;
+	background: rgba(0, 0, 0, 0);
+	width: calc(436px - 8px);
+	border: rgba(60, 60, 60, 255) solid 2px;
+	height: 26px;
+}
+
+.enemyhpbar {
+	background: rgba(100, 0, 0, 255);
+	width: 100%;
+	height: 26px;
+}
+
+#currentenemyhp {
+	position: absolute;
+	top: 0px;
+	width: calc(320px - 8px);
+	font-size: 22px;
+	color: red;
+	padding-left: 10px;
+	font-weight: 700;
+}
+
+#percentenemyhp {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 22px;
+	color: red;
+	padding-right: 10px;
+	font-weight: 700;
+}
+
+/* INVENTORY LAYER */
+#srtQueryData2 {
+	position: relative;
+	top: -520px;
+	left: calc((515px - 344px) / 2);
+	width: 344px;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+.emptyslot {
+	z-index: 1;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/Empty.png) no-repeat;
+	margin: 5px 5px 0 5px;
+}
+
+.main {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/Equipped.png) no-repeat;
+	flex-shrink: 0;
+}
+
+.sub {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/Equipped.png) no-repeat;
+}
+
+.slot1 {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/EquipSlot1.png) no-repeat;
+	flex-shrink: 0;
+}
+
+.slot2 {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/EquipSlot2.png) no-repeat;
+	flex-shrink: 0;
+}
+
+.slot3 {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/EquipSlot3.png) no-repeat;
+	flex-shrink: 0;
+}
+
+.slot4 {
+	position: absolute;
+	z-index: 5;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/EquipSlot4.png) no-repeat;
+	flex-shrink: 0;
+}
+
+.inventoryslot {
+	z-index: 1;
+	width: 76px;
+	height: 76px;
+	background: url(RE2R/Slot1.png) no-repeat;
+	position: relative;
+	flex-shrink: 0;
+	margin: 5px 5px 0 5px;
+}
+
+.inventoryslot2 {
+	z-index: 2;
+	width: 162px;
+	height: 76px;
+	background: url(RE2R/Slot2.png) no-repeat;
+	position: relative;
+	flex-shrink: 0;
+	margin: 5px 5px 0 5px;
+}
+
+.quantity {
+	position: absolute;
+	bottom: 3px;
+	right: 2px;
+	padding-right: 5px;
+	padding-left: 12px;
+	background: linear-gradient(90deg, rgba(9,9,121,0) 0%, rgba(0,0,0,1) 82%);
+}
+
+.ammo {
+	position: absolute;
+	bottom: 3px;
+	left: 2px;
+	padding-right: 5px;
+	padding-left: 5px;
+	background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,9,121,0) 82%);
+}

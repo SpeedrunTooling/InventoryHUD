@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+body {
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 24px;
+	font-family: "Teko", monospace;
+	font-weight: 700;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+#srtQueryData {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+font {
+	padding-right: 10px;
+}
+
+.inventory {
+	position: absolute;
+	width: calc(108px * 1.2 * 2);
+	top: 3px;
+	left: 126px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+img{
+	width: calc(108px * 1.2);
+	height: calc(68px * 1.2);
+}
+
+.inventory-item{
+    position: relative;
+    width: calc(108px * 1.2);
+    height: calc(68px * 1.2);
+}
+
+.equipped-item{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+    width: calc(126px * 1.2);
+    height: calc(82px * 1.2);
+	background: url(RE2C/Equipped.png) no-repeat;
+}
+
+.e-item{
+	position: relative;
+	top: 11px;
+	left: 26px;
+    width: 82px;
+    height: 62px;
+}
+
+.inventory-item-quantity {
+    position: absolute;
+    width: 35px;
+    height: 60px;
+    bottom: -30px;
+	left: 3px;
+    text-align: left;
+}
+
+.inventory-item-quantity2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 44px;
+	left: 30px;
+    text-align: left;
+}
+
+.green {
+	color: #00FF00;
+}
+
+.purple {
+	color: 	#693069;
+}
+
+.yellow {
+	color: yellow;
+}
+
+.orange {
+	color: orange;
+}
+
+.red {
+	color: red;
+}
+
+.grey {
+	color: gray;
+}
+
+.white{
+	color:#ffffff;
+}
