@@ -110,6 +110,9 @@ function appendData(data) {
 
 	switch (data.GameName)
 	{
+		case "RE0":
+			RE0GetItems(data);
+			return;
 		case "RE1":
 			RE1GetItems(data);
 			return;
@@ -158,6 +161,47 @@ function appendData(data) {
 			player2Container.innerHTML = "";
 			return;
 	}
+}
+
+// RESIDENT EVIL 0 REMAKE
+const RE0ItemImage = (itemId) => `<img src="RE0/${itemId}.png"></img>`;
+
+function RE0GetItems(data) {
+	let mainContainer = document.getElementById("srtQueryData");
+	let Inventory = data.PlayerInventory;
+	mainContainer.innerHTML = "";
+
+	//Equipped Weapon
+	//mainContainer.innerHTML += `<div class="equipped-item"><img class="e-item" src="RE0/${data.CurrentWeapon}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${RE1GetCurrentItemAmmo(data.PlayerInventory, data.CurrentWeapon)}</font></div></div>`;
+
+	//Inventory Display
+	let inventory = '<div class="inventory">';
+
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot1ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot1Quantity}</font></div></div>`;
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot2ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot2Quantity}</font></div></div>`;
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot3ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot3Quantity}</font></div></div>`;
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot4ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot4Quantity}</font></div></div>`;
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot5ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot5Quantity}</font></div></div>`;
+	inventory += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory.Slot6ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory.Slot6Quantity}</font></div></div>`;
+
+    inventory += "</div>";
+	mainContainer.innerHTML += inventory;
+
+	mainContainer.innerHTML += `<div class="equipped-item"><img class="e-item" src="RE0/${data.PlayerInventory.EquippedSlotID}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.PlayerInventory.EquippedSlotAmmo}</font></div></div>`;
+	
+	let inventory2 = '<div class="inventory2">';
+
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot1ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot1Quantity}</font></div></div>`;
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot2ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot2Quantity}</font></div></div>`;
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot3ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot3Quantity}</font></div></div>`;
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot4ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot4Quantity}</font></div></div>`;
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot5ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot5Quantity}</font></div></div>`;
+	inventory2 += `<div class="inventory-item">${RE0ItemImage(data.PlayerInventory2.Slot6ID)}<div class="inventory-item-quantity"><font color="#00FF00">${data.PlayerInventory2.Slot6Quantity}</font></div></div>`;
+
+    inventory2 += "</div>";
+	mainContainer.innerHTML += inventory2;
+	
+	mainContainer.innerHTML += `<div class="equipped-item2"><img class="e-item" src="RE0/${data.PlayerInventory.EquippedSlotID}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.PlayerInventory2.EquippedSlotAmmo}</font></div></div>`;
 }
 
 // RESIDENT EVIL 1 REBIRTH
