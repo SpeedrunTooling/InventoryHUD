@@ -28,6 +28,12 @@ font {
 	background: url("RE0/0.png");
 }
 
+.inventory-item2 {
+	width: 204px;
+	height: 82px;
+	background: url("RE0/Slot2x1.png");
+}
+
 .inventory {
 	position: absolute;
 	width: calc(102px * 2);
@@ -48,8 +54,13 @@ font {
 	flex-wrap: wrap;
 }
 
-img{
+.slot1 {
 	width: 102px;
+	height: 82px;
+}
+
+.slot2 {
+	width: 204px;
 	height: 82px;
 }
 
@@ -82,8 +93,13 @@ img{
 	justify-content: center;
 }
 
-.e-item{
+.e-item {
     width: 102px;
+    height: 82px;
+}
+
+.e-item2 {
+    width: 204px;
     height: 82px;
 }
 
@@ -91,8 +107,8 @@ img{
     position: absolute;
     width: 35px;
     height: 60px;
-    bottom: -30px;
-	left: 3px;
+    top: 52px;
+	left: 5px;
     text-align: left;
 }
 
@@ -100,8 +116,26 @@ img{
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 44px;
-	left: 30px;
+    top: 52px;
+	left: 5px;
+    text-align: left;
+}
+
+.equipped-item-quantity {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 52px;
+	left: 60px;
+    text-align: left;
+}
+
+.equipped-item-quantity2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 52px;
+	left: 5px;
     text-align: left;
 }
 
