@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 body {
 	background-color: transparent;
 	color: #ffffff;
-	font-size: 24px;
-	font-family: "Teko", monospace;
-	font-weight: 700;
+	font-size: 26px;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 .container {
@@ -25,20 +24,61 @@ font {
 .inventory-item {
 	width: 102px;
 	height: 82px;
-	background: url("RE0/0.png");
 }
 
 .inventory-item2 {
 	width: 204px;
 	height: 82px;
-	background: url("RE0/Slot2x1.png");
+}
+
+.background {
+	position: absolute;
+	top: 140px;
+	left: 0px;
+	width: 624px;
+	height: 380px;
+	background: url("RE0/Background.png");
+}
+
+.personal {
+	position: absolute;
+	top: 0px;
+	left: 104px;
+	width: 160px;
+	height: 160px;
+	background: url("RE0/Personal.png");
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.personal-item {
+	width: 102px;
+	height: 82px;	
+}
+
+.personal-item2 {
+	width: 102px;
+	height: 82px;
+}
+
+.personal2 {
+	position: absolute;
+	top: 0px;
+	left: 354px;
+	width: 160px;
+	height: 160px;
+	background: url("RE0/Personal.png");
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .inventory {
 	position: absolute;
 	width: calc(102px * 2);
-	top: 5px;
-	left: 5px;
+	top: 150px;
+	left: 84px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -47,8 +87,8 @@ font {
 .inventory2 {
 	position: absolute;
 	width: calc(102px * 2);
-	top: 5px;
-	right: 5px;
+	top: 150px;
+	left: 334px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -72,11 +112,10 @@ font {
 
 .equipped-item {
 	position: relative;
-	top: calc(82px * 3 + 10px);
-	left: 5px;
+	top: calc(82px * 3 + 168px);
+	left: 84px;
     width: 204px;
     height: 82px;
-	background: url(RE0/Slot2x1.png) no-repeat;
 	display: flex;
 	justify-content: center;
 
@@ -84,11 +123,10 @@ font {
 
 .equipped-item2 {
 	position: absolute;
-	top: calc(82px * 3 + 10px);
-	right: 5px;
+	top: calc(82px * 3 + 168px);
+	left: 334px;
     width: 204px;
     height: 82px;
-	background: url(RE0/Slot2x1.png) no-repeat;
 	display: flex;
 	justify-content: center;
 }
@@ -125,7 +163,7 @@ font {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 52px;
+    top: 47px;
 	left: 60px;
     text-align: left;
 }
@@ -134,13 +172,23 @@ font {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 52px;
+    top: 47px;
 	left: 5px;
     text-align: left;
 }
 
 .green {
 	color: #00FF00;
+}
+
+.lightgreen {
+	color: #7AB26D;
+	text-shadow: -2px 2px 2px black;
+}
+
+.lightblue {
+	color: #81B7C0;
+	text-shadow: -2px 2px 2px black;
 }
 
 .purple {
@@ -157,6 +205,11 @@ font {
 
 .red {
 	color: red;
+}
+
+.lightred {
+	color: #B14445;
+	text-shadow: -2px 2px 2px black;
 }
 
 .grey {

@@ -165,33 +165,39 @@ function appendData(data) {
 
 // RESIDENT EVIL 0 REMAKE
 const RE0ItemImage = (item) => `<img class=${item.Is2Slots ? "slot2" : "slot1"} src="RE0/${item.ID}.png"></img>`;
+const RE0PItemImage = (item) => `<img class="personal-item" src="RE0/${item.ID}.png"></img>`;
+const RE0PItem2Image = (item) => `<img class="personal-item2" src="RE0/${item.ID}.png"></img>`;
 
 function RE0GetItems(data) {
 	let mainContainer = document.getElementById("srtQueryData");
-	let Inventory = data.PlayerInventory;
 	mainContainer.innerHTML = "";
-
+	
+	mainContainer.innerHTML += `<div class="background"></div>`;
+	mainContainer.innerHTML += `<div class="personal">${RE0PItemImage(data.CurrentPersonal)}</div>`;
+	mainContainer.innerHTML += `<div class="personal2">${RE0PItem2Image(data.CurrentPersonal2)}</div>`;
 	//Inventory Display
 	let inventory = '';
 
 	data.PlayerInventory.map(item => {
 		if (item.ID == 180) { return; }
-		inventory += `<div class=${item.Is2Slots ? "inventory-item2" : "inventory-item"}>${RE0ItemImage(item)}<div class=${item.Is2Slots ? "inventory-item-quantity2" : "inventory-item-quantity"}><font color="#00FF00">${item.HasQuantity ? item.Quantity : ""}</font></div></div>`;
+		let itemType = item.IsWeapon ? "lightgreen" : item.IsItem ? "lightblue" : "lightred";
+		inventory += `<div class=${item.Is2Slots ? "inventory-item2" : "inventory-item"}>${RE0ItemImage(item)}<div class=${item.Is2Slots ? "inventory-item-quantity2" : "inventory-item-quantity"}><font class=${itemType}>${item.HasQuantity ? item.Quantity : ""}</font></div></div>`;
 	});
 	mainContainer.innerHTML += `<div class="inventory">${inventory}</div>`;
 
-	mainContainer.innerHTML += `<div class="equipped-item"><img class=${data.CurrentWeapon.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon.ID}.png"></img><div class=${data.CurrentWeapon.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font color="#00FF00">${data.CurrentWeapon.HasQuantity ? data.CurrentWeapon.Quantity : ""}</font></div></div>`;
+	mainContainer.innerHTML += `<div class="equipped-item"><img class=${data.CurrentWeapon.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon.ID}.png"></img><div class=${data.CurrentWeapon.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font class="lightgreen">${data.CurrentWeapon.HasQuantity ? data.CurrentWeapon.Quantity : ""}</font></div></div>`;
 	
 	let inventory2 = '';
 
 	data.PlayerInventory2.map(item => {
 		if (item.ID == 180) { return; }
-		inventory2 += `<div class=${item.Is2Slots ? "inventory-item2" : "inventory-item"}>${RE0ItemImage(item)}<div class=${item.Is2Slots ? "inventory-item-quantity2" : "inventory-item-quantity"}><font color="#00FF00">${item.HasQuantity ? item.Quantity : ""}</font></div></div>`;
+		let itemType = item.IsWeapon ? "lightgreen" : item.IsItem ? "lightblue" : "lightred";
+		inventory2 += `<div class=${item.Is2Slots ? "inventory-item2" : "inventory-item"}>${RE0ItemImage(item)}<div class=${item.Is2Slots ? "inventory-item-quantity2" : "inventory-item-quantity"}><font class=${itemType}>${item.HasQuantity ? item.Quantity : ""}</font></div></div>`;
 	});
 
 	mainContainer.innerHTML += `<div class="inventory2">${inventory2}</div>`;
 	
-	mainContainer.innerHTML += `<div class="equipped-item2"><img class=${data.CurrentWeapon2.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon2.ID}.png"></img><div class=${data.CurrentWeapon2.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font color="#00FF00">${data.CurrentWeapon2.HasQuantity ? data.CurrentWeapon2.Quantity : ""}</font></div></div>`;
+	mainContainer.innerHTML += `<div class="equipped-item2"><img class=${data.CurrentWeapon2.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon2.ID}.png"></img><div class=${data.CurrentWeapon2.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font class="lightgreen">${data.CurrentWeapon2.HasQuantity ? data.CurrentWeapon2.Quantity : ""}</font></div></div>`;
 }
 
 // RESIDENT EVIL 1 REBIRTH
