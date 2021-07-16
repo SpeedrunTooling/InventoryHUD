@@ -142,6 +142,7 @@ function appendData(data) {
 			RE3GetItems(data);
 			return;
 		case "RE1R":
+			RE1RGetItems(data);
 			return;
 		case "RE2R":
 			RE2RGetItems(data);
@@ -260,6 +261,42 @@ function RE1GetInventory(data) {
 	return data.PlayerInventory;
 }
 
+// RESIDENT EVIL 1 REMAKE
+const RE1RItemImage = (itemId) => `<img src="RE1R/${itemId}.png"></img>`;
+
+function RE1RGetItems(data) {
+	let mainContainer = document.getElementById("srtQueryData");
+	let Inventory = RE1RGetInventory(data);
+	mainContainer.innerHTML = "";
+	if (data.mStartPlayer == 0) 
+	{
+		mainContainer.innerHTML += `<div class="backgroundChris"></div>`;
+		mainContainer.innerHTML += `<div class="equipped-item-chris"><img class="e-item" src="RE1R/${data.Inventory[Inventory.length + 1].Item}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.Inventory[Inventory.length + 1].Quantity}</font></div></div>`;
+	}
+	else 
+	{
+		mainContainer.innerHTML += `<div class="backgroundJill"></div>`;
+		mainContainer.innerHTML += `<div class="equipped-item-jill"><img class="e-item" src="RE1R/${data.Inventory[Inventory.length + 1].Item}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.Inventory[Inventory.length + 1].Quantity}</font></div></div>`;
+	}
+
+	//Equipped Weapon
+	
+
+	//Inventory Display
+	let inventory = '<div class="inventory">';
+	Inventory.map(item => {
+		let quantity = item.Quantity != 0 ? item.Quantity : "";
+		inventory += `<div class="inventory-item">${RE1RItemImage(item.Item)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
+	});
+    inventory += "</div>"
+    mainContainer.innerHTML += inventory;
+}
+
+function RE1RGetInventory(data) {
+	if (data.mStartPlayer == 0) return data.Inventory.slice(0, 6);
+	return data.Inventory.slice(0, 8);
+}
+
 // RESIDENT EVIL 2 REBIRTH
 const RE2ItemImage = (itemId) => `<img src="RE2C/${pad(itemId)}.bmp"></img>`;
 
@@ -317,7 +354,7 @@ function RE2RGetItems(data) {
 	});
 	//console.log(`Inventory: ${PlayerInventory}`);
 	
-	InventoryCount = PlayerInventory.length;
+	InventoryCount = data.PlayerInventoryCount;
 
 	var newData = [];
 
