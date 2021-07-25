@@ -173,7 +173,13 @@ function appendData(data) {
 			RE7GetItems(data);
 			return;
 		case "RE8":
-			RE8GetItems(data)
+			RE8GetItems(data);
+			return;
+		case "REREV1":
+			REV1GetItems(data);
+			return;
+		case "REREV2":
+			REV2GetItems(data);
 			return;
 		default:
 			mainContainer.innerHTML = "No Plugin Detected";
@@ -181,6 +187,49 @@ function appendData(data) {
 			player2Container.innerHTML = "";
 			return;
 	}
+}
+
+// RESIDENT EVIL: REVELATIONS 1
+function REV1GetItems(data)
+{
+	let mainContainer = document.getElementById("srtQueryData");
+	mainContainer.innerHTML = "";
+
+	mainContainer.innerHTML += `<img class="handgun" src="REREV1/Handgun.png"><div class="quantity green">${data.PlayerInventory.HandgunAmmo}</div></img>`;
+	mainContainer.innerHTML += `<img class="shotgun" src="REREV1/Shotgun.png"><div class="quantity green">${data.PlayerInventory.ShotgunAmmo}</div></img>`;
+	mainContainer.innerHTML += `<img class="machinegun" src="REREV1/MachineGun.png"><div class="quantity green">${data.PlayerInventory.MachineGunAmmo}</div></img>`;
+	mainContainer.innerHTML += `<img class="rifle" src="REREV1/Rifle.png"><div class="quantity green">${data.PlayerInventory.RifleAmmo}</div></img>`;
+	mainContainer.innerHTML += `<img class="magnum" src="REREV1/Magnum.png"><div class="quantity green">${data.PlayerInventory.MagnumAmmo}</div></img>`;
+	mainContainer.innerHTML += `<img class="herbs" src="REREV1/GreenHerb.png"><div class="quantity green">${data.PlayerInventory.GreenHerb}</div></img>`;
+}
+
+// RESIDENT EVIL: REVELATIONS 2
+const REV2ItemImage = (item) => `<img class="item" src="REREV2/${item.ID}.png"></img>`;
+
+function REV2GetItems(data)
+{
+	let mainContainer = document.getElementById("srtQueryData");
+	mainContainer.innerHTML = "";
+
+	let inventory = '';
+	data.PlayerInventory.slice(0, data.PlayerInventorySize).map(item => {
+		inventory += `
+		<div class="inventory-item">
+			${REV2ItemImage(item)}
+			<div class="quantity ${item.Quantity == item.MaxQuantity ? "max" : "normal"}">${item.ID != 0 ? item.Quantity : ""}</div>
+		</div>`;
+	});
+	mainContainer.innerHTML += `<div class="inventory">${inventory}</div>`;
+
+	let inventory2 = '';
+	data.Player2Inventory.slice(0, data.Player2InventorySize).map(item => {
+		inventory2 += `
+		<div class="inventory-item">
+			${REV2ItemImage(item)}
+			<div class="quantity ${item.Quantity == item.MaxQuantity ? "max" : "normal"}">${item.ID != 0 ? item.Quantity : ""}</div>
+		</div>`;
+	});
+	mainContainer.innerHTML += `<div class="inventory2">${inventory2}</div>`;
 }
 
 // RESIDENT EVIL 0 REMAKE
