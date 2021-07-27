@@ -129,6 +129,9 @@ function appendData(data) {
 
 	switch (data.GameName)
 	{
+		case "Dino Crisis 1 Rebirth":
+			DC1RGetSupplies(data);
+			return;
 		case "RE0":
 			RE0GetItems(data);
 			return;
@@ -187,6 +190,38 @@ function appendData(data) {
 			player2Container.innerHTML = "";
 			return;
 	}
+}
+
+// DINO CRISIS 1 REBIRTH
+const DC1ItemImage = (item) => `<img class="item" src="Dino Crisis 1 Rebirth/${item.ID}.svg"></img>`;
+
+function DC1RGetSupplies(data)
+{
+	let mainContainer = document.getElementById("srtQueryData");
+	let children = "";
+	data.PlayerSupplies.map(item => {
+		if (item.Quantity == 0)
+		{
+			children += `
+			<div class="item-slot">
+				<div class="item-data">
+					<div class="leftside white"><img class="item" src="Dino Crisis 1 Rebirth/0.svg"></img>No Item</div>
+					<div class="rightside grey">0 / 0</div>
+				</div>
+			</div>`;
+		}
+		else
+		{
+			children += `
+			<div class="item-slot">
+				<div class="item-data">
+					<div class="leftside white">${DC1ItemImage(item)}${(item.Name != "") ? item.Name : "No Item"}</div>
+					<div class="rightside grey">${item.Quantity} / ${item.MaxQuantity}</div>
+				</div>
+			</div>`;
+		}
+	});
+	mainContainer.innerHTML = `<div class="inventory">${children}</div>`;
 }
 
 // RESIDENT EVIL: REVELATIONS 1
