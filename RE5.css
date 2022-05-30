@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
 body {
-	background-color: transparent;
+	background-color: #000000;
 	color: #ffffff;
 	font-size: 20px;
 	font-family: "Teko", monospace;
@@ -54,6 +54,22 @@ font {
 	position: relative;
 	width: 100px;
 	height: 100px;
+}
+
+.equipped {
+	position: absolute;
+	width: 95px;
+	top: 0px;
+	font-size: 25px;
+	text-align: right;
+}
+
+.equipped2 {
+	position: relative;
+	width: 95px;
+	top: 0px;
+	font-size: 25px;
+	text-align: right;
 }
 
 .quantity {
