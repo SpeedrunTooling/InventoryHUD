@@ -154,23 +154,8 @@ function appendData(data) {
 			RE3RGetItems(data);
 			return;
 		case "RE5":
-			if (!IsSeparated)
-			{
-				RE5GetItemsPlayer1(data);
-				RE5GetItemsPlayer2(data);
-				return;
-			}
-			else 
-			{
-				if (IsPlayer2) 
-				{
-					RE5GetItemsPlayer2(data);
-					player1Container.style.background = "none";
-					return;
-				}
-				RE5GetItemsPlayer1(data);
-				player2Container.style.background = "none";
-			}
+			RE5GetItemsPlayer1(data);
+			RE5GetItemsPlayer2(data);
 			return;
 		case "RE7":
 			RE7GetItems(data);
@@ -2375,30 +2360,102 @@ function RE5GetItemsPlayer2(data) {
 
 function RE5GetPlayer1(item) {
 	let mainContainer = document.getElementById("srtPlayer1");
-	mainContainer.innerHTML += `
+	if (item.StackSize < item.MaxSize && item.StackSize != 0) {
+		mainContainer.innerHTML += `
 		<div class="item" id="slot${item.SlotNo}">
-			<div id="${item.ItemName}">
+			<img id="${item.ItemName}">
+				<div class="quantity">
+					<font color="#FFFFFF">
+						${item.StackSize}
+					</font>
+				</div>
+				
+			</img>
+		</div>`;
+	} else if(item.StackSize == 0 && item.MaxSize >= 1){
+		mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<img id="${item.ItemName}">
+				<div class="quantity">
+					<font color="#FF0000">
+						${item.StackSize}
+					</font>
+				</div>
+				
+			</img>
+		</div>`;
+	} else {
+		mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<img id="${item.ItemName}">
 				<div class="quantity">
 					<font color="#00FF00">
 						${item.StackSize}
 					</font>
 				</div>
+			</img>
+		</div>`;
+	}
+	if (item.EquippedState == 1) {
+		mainContainer.innerHTML += `
+		<div id="slot${item.SlotNo}">
+			<div class="equipped">
+				<font color="orange">
+					E
+				</font>
 			</div>
 		</div>`;
+	}
 }
 
 function RE5GetPlayer2(item) {
 	let mainContainer = document.getElementById("srtPlayer2");
-	mainContainer.innerHTML += `
+	if (item.StackSize < item.MaxSize && item.StackSize != 0) {
+		mainContainer.innerHTML += `
 		<div class="item" id="slot${item.SlotNo}">
-			<div id="${item.ItemName}">
+			<img id="${item.ItemName}">
+				<div class="quantity">
+					<font color="#FFFFFF">
+						${item.StackSize}
+					</font>
+				</div>
+				
+			</img>
+		</div>`;
+	} else if(item.StackSize == 0 && item.MaxSize >= 1){
+		mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<img id="${item.ItemName}">
+				<div class="quantity">
+					<font color="#FF0000">
+						${item.StackSize}
+					</font>
+				</div>
+				
+			</img>
+		</div>`;
+	} else {
+		mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<img id="${item.ItemName}">
 				<div class="quantity">
 					<font color="#00FF00">
 						${item.StackSize}
 					</font>
 				</div>
+			</img>
+		</div>`;
+	}
+	if (item.EquippedState == 1) {
+		mainContainer.innerHTML += `
+		<div id="slot${item.SlotNo}">
+			<div class="equipped2">
+				<font color="orange">
+					E
+				</font>
 			</div>
 		</div>`;
+	}
 }
 
 // RESIDENT EVIL 7
