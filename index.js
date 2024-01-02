@@ -1224,41 +1224,41 @@ function RE2RGetItems(data) {
 					break;
 			}
 		} else if (PlayerInventory[i].IsWeapon) {
-			switch (PlayerInventory[i].WeaponID) {
+			switch (PlayerInventory[i].WeaponId) {
 
 				case 1:
 					equipped = Equipped(data, 1);
-					if (PlayerInventory[i].Attachments == 1) {
+					if (PlayerInventory[i].WeaponParts == 1) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div></div><img src="RE2R/Handgun_Matilda1.png" alt="Handgun Matilda First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 2) {
+					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda2.png" alt="Handgun Matilda Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 3) {
+					else if (PlayerInventory[i].WeaponParts == 3) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda3.png" alt="Handgun Matilda First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 4) {
+					else if (PlayerInventory[i].WeaponParts == 4) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda4.png" alt="Handgun Matilda Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 5) {
+					else if (PlayerInventory[i].WeaponParts == 5) {
 						newData[
 							PlayerInventory[i].S*lotPosition
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda5.png" alt="Handgun Matilda First Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 6) {
+					else if (PlayerInventory[i].WeaponParts == 6) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda6.png" alt="Handgun Matilda Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 7) {
+					else if (PlayerInventory[i].WeaponParts == 7) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda7.png" alt="Handgun Matilda First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1279,37 +1279,37 @@ function RE2RGetItems(data) {
 
 				case 3:
 					equipped = Equipped(data, 3);
-					if (PlayerInventory[i].Attachments == 1) {
+					if (PlayerInventory[i].WeaponParts == 1) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_1.png" alt="Handgun JMB Hp3 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 2) {
+					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_2.png" alt="Handgun JMB Hp3 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 3) {
+					else if (PlayerInventory[i].WeaponParts == 3) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 4) {
+					else if (PlayerInventory[i].WeaponParts == 4) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 5) {
+					else if (PlayerInventory[i].WeaponParts == 5) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 6) {
+					else if (PlayerInventory[i].WeaponParts == 6) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
-					else if (PlayerInventory[i].Attachments == 7) {
+					else if (PlayerInventory[i].WeaponParts == 7) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1345,32 +1345,32 @@ function RE2RGetItems(data) {
 
 				case 9:
 					equipped = Equipped(data, 9);
-					if (PlayerInventory[i].Attachments == 1) {
+					if (PlayerInventory[i].WeaponParts == 1) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 2) {
+					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS60.png" alt="Handgun SLS60 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 3) {
+					else if (PlayerInventory[i].WeaponParts == 3) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 4) {
+					else if (PlayerInventory[i].WeaponParts == 4) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 5) {
+					else if (PlayerInventory[i].WeaponParts == 5) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 6) {
+					else if (PlayerInventory[i].WeaponParts == 6) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1384,17 +1384,17 @@ function RE2RGetItems(data) {
 
 				case 11:
 					equipped = Equipped(data, 11);
-					if (PlayerInventory[i].Attachments == 1) {
+					if (PlayerInventory[i].WeaponParts == 1) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8701.png" alt="Shotgun W870 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 2) {
+					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8702.png" alt="Shotgun W870 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 3) {
+					else if (PlayerInventory[i].WeaponParts == 3) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8703.png" alt="Shotgun W870 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1408,17 +1408,17 @@ function RE2RGetItems(data) {
 
 				case 21:
 					equipped = Equipped(data, 21);
-					if (PlayerInventory[i].Attachments == 1) {
+					if (PlayerInventory[i].WeaponParts == 1) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_1.png" alt="SMG MQ11 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 2) {
+					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_2.png" alt="SMG MQ11 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					else if (PlayerInventory[i].Attachments == 3) {
+					else if (PlayerInventory[i].WeaponParts == 3) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_3.png" alt="SMG MQ11 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1439,17 +1439,17 @@ function RE2RGetItems(data) {
 
 				case 31:
 					equipped = Equipped(data, 31);
-						if (PlayerInventory[i].Attachments == 1) {
+						if (PlayerInventory[i].WeaponParts == 1) {
 							newData[
 								PlayerInventory[i].SlotNo
 							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk1.png" alt="Handgun LightningHawk First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
-						else if (PlayerInventory[i].Attachments == 2) {
+						else if (PlayerInventory[i].WeaponParts == 2) {
 							newData[
 								PlayerInventory[i].SlotNo
 							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk2.png" alt="Handgun LightningHawk Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
-						else if (PlayerInventory[i].Attachments == 3) {
+						else if (PlayerInventory[i].WeaponParts == 3) {
 							newData[
 								PlayerInventory[i].SlotNo
 							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk3.png" alt="Handgun LightningHawk First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1470,7 +1470,7 @@ function RE2RGetItems(data) {
 
 				case 42:
 					equipped = Equipped(data, 42);
-					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
+					if (PlayerInventory[i].WeaponParts == 1 || PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM791.png" alt="GrenadeLauncher GM79 First?"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1485,7 +1485,7 @@ function RE2RGetItems(data) {
 
 				case 43:
 					equipped = Equipped(data, 43);
-					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
+					if (PlayerInventory[i].WeaponParts == 1 || PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower2.png" alt="Chemical Flamethrower First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
@@ -1499,7 +1499,7 @@ function RE2RGetItems(data) {
 
 				case 44:
 					equipped = Equipped(data, 44);
-					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
+					if (PlayerInventory[i].WeaponParts == 1 || PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot1.png" alt="SparkShot First?"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
