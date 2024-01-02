@@ -412,18 +412,18 @@ function RE2RGetItems(data) {
 	var mainContainer = document.getElementById("inventoryRER");
 	mainContainer.innerHTML = "";
 	
-	if (data.PlayerInventory[0].SlotPosition == null) {
+	if (data.PlayerInventory[0].SlotNo == null) {
 		mainContainer.innerHTML = `<div class="emptyslot"></div>`;
 		return;
 	}
-	PlayerInventory = data.PlayerInventory;
+	PlayerInventory = data.Items;
 	
 	PlayerInventory.sort(function (a, b) {
-		return Asc(a.SlotPosition, b.SlotPosition);
+		return Asc(a.SlotNo, b.SlotNo);
 	});
 	//console.log(`Inventory: ${PlayerInventory}`);
 	
-	InventoryCount = data.PlayerInventoryCount;
+	InventoryCount = data.InventoryCount;
 
 	var newData = [];
 
@@ -432,793 +432,793 @@ function RE2RGetItems(data) {
 		var previousItemExists = typeof previousItem !== "undefined";
 		var previousItemIsDouble =
 			previousItemExists &&
-			typeof newData[previousItem.SlotPosition] !== "undefined" &&
-			newData[previousItem.SlotPosition].includes("inventoryslot2");
+			typeof newData[previousItem.SlotNo] !== "undefined" &&
+			newData[previousItem.SlotNo].includes("inventoryslot2");
 
 		if (PlayerInventory[i].IsEmptySlot) {
 			if (!previousItemIsDouble) {
-				newData[PlayerInventory[i].SlotPosition] = `<div class="emptyslot"></div>`;
+				newData[PlayerInventory[i].SlotNo] = `<div class="emptyslot"></div>`;
 			}
 		} else if (PlayerInventory[i].IsItem) {
-			switch (PlayerInventory[i].ItemID) {
+			switch (PlayerInventory[i].ItemId) {
 
 				case 1:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/FirstAidSpray.png" alt="First Aid Spray"/></div>`;
 					break;
 
 				case 2:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GreenHerb.png" alt="Green Herb"/></div>`;
 					break;
 
 				case 3:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/RedHerb.png" alt="Red Herb"/></div>`;
 					break;
 
 				case 4:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BlueHerb.png" alt="Blue Herb"/></div>`;
 					break;
 
 				case 5:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGG.png" alt="Mixed Herb (G+G)"/></div>`;
 					break;
 
 				case 6:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGR.png" alt="Mixed Herb (G+R)"/></div>`;
 					break;
 
 				case 7:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGB.png" alt="Mixed Herb (G+B)"/></div>`;
 					break;
 
 				case 8:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGGB.png" alt="Mixed Herb (G+G+B)"/></div>`;
 					break;
 
 				case 9:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGGG.png" alt="Mixed Herb (G+G+G)"/></div>`;
 					break;
 
 				case 10:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsGRB.png" alt="Mixed Herb (G+R+B)"/></div>`;
 					break;
 
 				case 11:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MixedHerbsRB.png" alt="Mixed Herb (R+B)"/></div>`;
 					break;
 
 				case 12:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GreenHerb2.png" alt="Green Herb 2"/></div>`;
 					break;
 
 				case 13:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/RedHerb2.png" alt="Red Herb 2"/></div>`;
 					break;
 
 				case 14:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BlueHerb2.png" alt="Blue Herb 2"/></div>`;
 					break;
 
 				case 15:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/HandgunAmmo.png" alt="Handgun Ammo"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/HandgunAmmo.png" alt="Handgun Ammo"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 16:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/ShotgunAmmo.png" alt="Shotgun Ammo"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/ShotgunAmmo.png" alt="Shotgun Ammo"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 17:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/SubmachineGunAmmo.png" alt="Submachine Gun Ammo "><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/SubmachineGunAmmo.png" alt="Submachine Gun Ammo "><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 18:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/MAGAmmo.png" alt="MAG Ammo"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/MAGAmmo.png" alt="MAG Ammo"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 22:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/AcidRounds.png" alt="Acid Rounds"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/AcidRounds.png" alt="Acid Rounds"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 23:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/FlameRounds.png" alt="Flame Rounds"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/FlameRounds.png" alt="Flame Rounds"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 24:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/NeedleCartridges.png" alt="NeedleCartridges"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/NeedleCartridges.png" alt="NeedleCartridges"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 25:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/Fuel.png" alt="Fuel"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/Fuel.png" alt="Fuel"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 					
 				case 26:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/HandgunLargeCaliberAmmo.png" alt="Handgun Large Caliber Ammo"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/HandgunLargeCaliberAmmo.png" alt="Handgun Large Caliber Ammo"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 27:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/SLS60HighPoweredRounds.png" alt="SLS60 High Powered Rounds"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/SLS60HighPoweredRounds.png" alt="SLS60 High Powered Rounds"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 31:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Detonator.png" alt="Detonator"></div>`;
 					break;
 
 				case 32:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/InkRibbon.png" alt="InkRibbon"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/InkRibbon.png" alt="InkRibbon"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 33:
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><img src="RE2R/WoodenBoard.png" alt="Wooden Board"><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><img src="RE2R/WoodenBoard.png" alt="Wooden Board"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 34:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DetonatorNoBattery.png" alt="Electronic Gadget"></div>`;
 					break;
 
 				case 35:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Battery9Volt.png" alt="Battery 9 Volt"></div>`;
 					break;
 
 				case 36:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Gunpowder.png" alt="Gunpowder"/></div>`;
 					break;
 
 				case 37:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GunpowderLarge.png" alt="Gunpowder Large"/></div>`;
 					break;
 
 				case 38:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GunpowderHighGradeYellow.png" alt="Gunpowder High Grade Yellow"/></div>`;
 					break;
 
 				case 39:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GunpowderHighGradeWhite.png" alt="Gunpowder High Grade White"/></div>`;
 					break;
 
 				case 48:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MatildaHighCapacityMagazine.png" alt="Matilda High Capacity Magazine"/></div>`;
 					break;
 
 				case 49:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MatildaMuzzleBrake.png" alt="Matilda Muzzle Brake"/></div>`;
 					break;
 
 				case 50:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MatildaGunStock.png" alt="Matilda Gun Stock"/></div>`;
 					break;
 
 				case 51:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SLS60SpeedLoader.png" alt="SLS60 Speed Loader"/></div>`;
 					break;
 
 				case 52:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JMBHp3LaserSight.png" alt="JMBHp3 Laser Sight"/></div>`;
 					break;
 
 				case 53:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SLS60ReinforcedFrame.png" alt="SLS60 Reinforced Frame"/></div>`;
 					break;
 
 				case 54:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JMBHp3HighCapacityMagazine.png" alt="JMBHp3 High Capacity Magazine"/></div>`;
 					break;
 
 				case 55:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/W870ShotgunStock.png" alt="W870 Shotgun Stock"/></div>`;
 					break;
 
 				case 56:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/W870LongBarrel.png" alt="W870 Long Barrel"/></div>`;
 					break;
 
 				case 58:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MQ11HighCapacityMagazine.png" alt="MQ11 High Capacity Magazine"/></div>`;
 					break;
 
 				case 60:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MQ11Suppressor.png" alt="MQ11 Suppressor"/></div>`;
 					break;
 
 				case 61:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/LightningHawkRedDotSight.png" alt="Lightning Hawk Red Dot Sight"/></div>`;
 					break;
 
 				case 62:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/LightningHawkLongBarrel.png" alt="Lightning Hawk Long Barrel"/></div>`;
 					break;
 
 				case 64:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GM79ShoulderStock.png" alt="GM79 Shoulder Stock"/></div>`;
 					break;
 
 				case 65:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/FlamethrowerRegulator.png" alt="Flamethrower Regulator"/></div>`;
 					break;
 
 				case 66:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SparkShotHighVoltageCondenser.png" alt="Spark Shot High Voltage Condenser"/></div>`;
 					break;
 
 				case 72:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Film_HidingPlace.png" alt="Film Hiding Place"/></div>`;
 					break;
 
 				case 73:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Film_RisingRookie.png" alt="Film Rising Rookie"/></div>`;
 					break;
 
 				case 74:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Film_Commemorative.png" alt="Film Commemorative"/></div>`;
 					break;
 
 				case 75:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Film_3FLocker.png" alt="Film 3F Locker"/></div>`;
 					break;
 
 				case 76:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Film_LionStatue.png" alt="Film Lion Statue"/></div>`;
 					break;
 
 				case 77:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyStorageRoom.png" alt="Key Storage Room"/></div>`;
 					break;
 
 				case 79:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JackHandle.png" alt="Jack Handle"/></div>`;
 					break;
 
 				case 80:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SquareCrank.png" alt="Square Crank"/></div>`;
 					break;
 
 				case 81:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MedallionUnicorn.png" alt="Medallion Unicorn"/></div>`;
 					break;
 					
 				case 82:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeySpade.png" alt="Key Spade"/></div>`;
 					break;
 
 				case 83:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyCardParkingGarage.png" alt="Key Card Parking Garage"/></div>`;
 					break;
 
 				case 84:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyCardWeaponsLocker.png" alt="Key Card Weapons Locker"/></div>`;
 					break;
 
 				case 86:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/ValveHandle.png" alt="Valve Handle"/></div>`;
 					break;
 
 				case 87:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/STARSBadge.png" alt="STARSBadge"/></div>`;
 					break;
 
 				case 88:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Scepter.png" alt="Scepter"/></div>`;
 					break;
 
 				case 90:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/RedJewel.png" alt="Red Jewel"/></div>`;
 					break;
 
 				case 91:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BejeweledBox.png" alt="Bejeweled Box"/></div>`;
 					break;
 
 				case 93:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugBishop.png" alt="Plug Bishop"/></div>`;
 					break;
 
 				case 94:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugRook.png" alt="Plug Rook"/></div>`;
 					break;
 					
 				case 95:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugKing.png" alt="Plug King"/></div>`;
 					break;
 
 				case 98:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PictureBlock.png" alt="Picture Block"/></div>`;
 					break;
 
 				case 102:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/USBDongleKey.png" alt="USB Dongle Key"/></div>`;
 					break;
 
 				case 112:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SpareKey.png" alt="Spare Key"/></div>`;
 					break;
 
 				case 114:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/RedBook.png" alt="Red Book"/></div>`;
 					break;
 
 				case 115:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/StatuesLeftArm.png" alt="Statues Left Arm"/></div>`;
 					break;
 
 				case 116:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/StatuesLeftArmWithRedBook.png" alt="Statues Left Arm With Red Book"/></div>`;
 					break;
 
 				case 118:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MedallionLion.png" alt="Medallion Lion"/></div>`;
 					break;
 
 				case 119:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyDiamond.png" alt="Key Diamond"/></div>`;
 					break;
 
 				case 120:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyCar.png" alt="Key Car"/></div>`;
 					break;
 
 				case 124:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MedallionMaiden.png" alt="Medallion Maiden"/></div>`;
 					break;
 
 				case 126:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PowerPanelPart.png" alt="Power Panel Part 1"/></div>`;
 					break;
 
 				case 127:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PowerPanelPart.png" alt="Power Panel Part 2"/></div>`;
 					break;
 
 				case 128:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/LoversRelief.png" alt="Lovers Relief"/></div>`;
 					break;
 
 				case 129:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GearSmall.png" alt="Gear Small"/></div>`;
 					break;
 
 				case 130:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot2"><img src="RE2R/GearLarge.png" alt="Gear Large"/></div>`;
 					break;
 
 				case 131:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyCourtyard.png" alt="Key Courtyard"/></div>`;
 					break;
 
 				case 132:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugKnight.png" alt="Plug Knight"/></div>`;
 					break;
 
 				case 133:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugPawn.png" alt="Plug Pawn"/></div>`;
 					break;
 
 				case 134:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugQueen.png" alt="Plug Queen"/></div>`;
 					break;
 
 				case 135:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BoxedElectronicPart.png" alt="Boxed Electronic Part 1"/></div>`;
 					break;
 
 				case 136:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BoxedElectronicPart.png" alt="Boxed Electronic Part 2"/></div>`;
 					break;
 
 				case 159:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyOrphanage.png" alt="Key Orphanage"/></div>`;
 					break;
 
 				case 160:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyClub.png" alt="Key Club"/></div>`;
 					break;
 
 				case 169:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeyHeart.png" alt="Key Heart"/></div>`;
 					break;
 
 				case 170:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DigitalVideoCassette.png" alt="USS Digital Video Cassette"/></div>`;
 					break;
 
 				case 176:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/TBarValveHandle.png" alt="TBar Valve Handle"/></div>`;
 					break;
 
 				case 179:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DispersalCartridgeEmpty.png" alt="Dispersal Cartridge Empty"/></div>`;
 					break;
 
 				case 180:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DispersalCartridgeSolution.png" alt="Dispersal Cartridge Solution"/></div>`;
 					break;
 
 				case 181:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DispersalCartridgeHerbicide.png" alt="Dispersal Cartridge Herbicide"/></div>`;
 					break;
 
 				case 183:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JointPlug.png" alt="Joint Plug"/></div>`;
 					break;
 
 				case 186:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/UpgradeChipAdministrator.png" alt="Upgrade Chip Administrator"/></div>`;
 					break;
 
 				case 187:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandAdministrator.png" alt="ID Wristband Administrator"/></div>`;
 					break;
 					
 				case 188:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/ElectronicChip.png" alt="Electronic Chip"/></div>`;
 					break;
 
 				case 189:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/SignalModulator.png" alt="Signal Modulator"/></div>`;
 					break;
 
 				case 190:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Trophy.png" alt="Trophy 1"/></div>`;
 					break;
 
 				case 191:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Trophy.png" alt="Trophy 2"/></div>`;
 					break;
 
 				case 194:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/KeySewers.png" alt="Key Sewers"/></div>`;
 					break;
 
 				case 195:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandVisitor1.png" alt="ID Wristband Visitor 1"/></div>`;
 					break;
 
 				case 196:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandGeneralStaff1.png" alt="ID Wristband General Staff 1"/></div>`;
 					break;
 
 				case 197:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandSeniorStaff1.png" alt="ID Wristband Senior Staff 1"/></div>`;
 					break;
 
 				case 198:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/UpgradeChipGeneralStaff.png" alt="Upgrade Chip General Staff"/></div>`;
 					break;
 
 				case 199:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/UpgradeChipSeniorStaff.png" alt="Upgrade Chip Senior Staff"/></div>`;
 					break;
 
 				case 200:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandVisitor2.png" alt="ID Wristband Visitor 2"/></div>`;
 					break;
 
 				case 201:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandGeneralStaff2.png" alt="ID Wristband General Staff 2"/></div>`;
 					break;
 
 				case 202:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandSeniorStaff2.png" alt="ID Wristband Senior Staff 2"/></div>`;
 					break;
 
 				case 203:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/DigitalVideoCassette.png" alt="Lab Digital Video Cassette"/></div>`;
 					break;
 
 				case 230:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Briefcase.png" alt="Briefcase"/></div>`;
 					break;
 
 				case 240:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/FuseMainHall.png" alt="Fuse Main Hall"/></div>`;
 					break;
 
 				case 241:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/FuseBreakRoom.png" alt="Fuse Break Room"/></div>`;
 					break;
 
 				case 243:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Scissors.png" alt="Scissors"/></div>`;
 					break;
 
 				case 244:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/BoltCutters.png" alt="BoltCutters"/></div>`;
 					break;
 
 				case 245:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/StuffedDoll.png" alt="Stuffed Doll"/></div>`;
 					break;
 
 				case 262:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/HipPouch.png" alt="Hip Pouch"/></div>`;
 					break;
 
 				case 286:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/OldKey.png" alt="Old Key"/></div>`;
 					break;
 
 				case 291:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PortableSafe.png" alt="PortableSafe"/></div>`;
 					break;
 
 				case 293:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/TinStorageBox.png" alt="Tin Storage Box 1"/></div>`;
 					break;
 
 				case 294:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/WoodenBox.png" alt="Wooden Box 1"/></div>`;
 					break;
 
 				case 295:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/WoodenBox.png" alt="Wooden Box 2"/></div>`;
 					break;
 
 				case 296:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/TinStorageBox.png" alt="Tin Storage Box 2"/></div>`;
 					break;
 
 				case 2130706433:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JointPlug.png" alt="Joint Plug 2"/></div>`;
 					break;
 					
 				case 2130706434:
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/GearLarge.png" alt="Gear Large 2"/></div>`;
 					break;
 			}
@@ -1229,94 +1229,94 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 1);
 					if (PlayerInventory[i].Attachments == 1) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div></div><img src="RE2R/Handgun_Matilda1.png" alt="Handgun Matilda First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div></div><img src="RE2R/Handgun_Matilda1.png" alt="Handgun Matilda First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda2.png" alt="Handgun Matilda Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda2.png" alt="Handgun Matilda Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda3.png" alt="Handgun Matilda First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda3.png" alt="Handgun Matilda First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 4) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda4.png" alt="Handgun Matilda Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda4.png" alt="Handgun Matilda Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 5) {
 						newData[
 							PlayerInventory[i].S*lotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda5.png" alt="Handgun Matilda First Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda5.png" alt="Handgun Matilda First Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 6) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda6.png" alt="Handgun Matilda Second, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda6.png" alt="Handgun Matilda Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 7) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda7.png" alt="Handgun Matilda First, Second, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda7.png" alt="Handgun Matilda First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda.png" alt="Handgun Matilda"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda.png" alt="Handgun Matilda"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					break;
 
 				case 2:
 					equipped = Equipped(data, 2);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_M19.png" alt="Handgun M19"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_M19.png" alt="Handgun M19"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 3:
 					equipped = Equipped(data, 3);
 					if (PlayerInventory[i].Attachments == 1) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_1.png" alt="Handgun JMB Hp3 First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_1.png" alt="Handgun JMB Hp3 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_2.png" alt="Handgun JMB Hp3 Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_2.png" alt="Handgun JMB Hp3 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 4) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 5) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 6) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Second, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else if (PlayerInventory[i].Attachments == 7) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					} 
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3.png" alt="Handgun JMB Hp3"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3.png" alt="Handgun JMB Hp3"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					
 					break;
@@ -1324,60 +1324,60 @@ function RE2RGetItems(data) {
 				case 4:
 					equipped = Equipped(data, 4);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Quickdraw_Army.png" alt="Handgun Quickdraw Army"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_Quickdraw_Army.png" alt="Handgun Quickdraw Army"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 7:
 					equipped = Equipped(data, 7);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_MUP.png" alt="Handgun MUP"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_MUP.png" alt="Handgun MUP"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 8:
 					equipped = Equipped(data, 8);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_BroomHc.png" alt="Handgun BroomHc"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_BroomHc.png" alt="Handgun BroomHc"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
 
 				case 9:
 					equipped = Equipped(data, 9);
 					if (PlayerInventory[i].Attachments == 1) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS60.png" alt="Handgun SLS60 Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS60.png" alt="Handgun SLS60 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 4) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 5) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 First, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 6) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Second, Third"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS601.png" alt="Handgun SLS60 Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS60.png" alt="Handgun SLS60"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SLS60.png" alt="Handgun SLS60"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					break;
 
@@ -1385,23 +1385,23 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 11);
 					if (PlayerInventory[i].Attachments == 1) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8701.png" alt="Shotgun W870 First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8701.png" alt="Shotgun W870 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8702.png" alt="Shotgun W870 Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8702.png" alt="Shotgun W870 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8703.png" alt="Shotgun W870 First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Shotgun_W8703.png" alt="Shotgun W870 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Shotgun_W870.png" alt="Shotgun W870"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Shotgun_W870.png" alt="Shotgun W870"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 				break;
 
@@ -1409,30 +1409,30 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 21);
 					if (PlayerInventory[i].Attachments == 1) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_1.png" alt="SMG MQ11 First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_1.png" alt="SMG MQ11 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_2.png" alt="SMG MQ11 Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_2.png" alt="SMG MQ11 Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_3.png" alt="SMG MQ11 First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SMG_MQ11_3.png" alt="SMG MQ11 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/SMG_MQ11.png" alt="SMG MQ11"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/SMG_MQ11.png" alt="SMG MQ11"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 				break;
 
 				case 23:
 					equipped = Equipped(data, 23);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/SMG_LE5_Infinite.png" alt="SMG LE5 Infinite"/><div class="quantity">∞</div></div>`;
 					break;
 
@@ -1440,30 +1440,30 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 31);
 						if (PlayerInventory[i].Attachments == 1) {
 							newData[
-								PlayerInventory[i].SlotPosition
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk1.png" alt="Handgun LightningHawk First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+								PlayerInventory[i].SlotNo
+							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk1.png" alt="Handgun LightningHawk First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
 						else if (PlayerInventory[i].Attachments == 2) {
 							newData[
-								PlayerInventory[i].SlotPosition
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk2.png" alt="Handgun LightningHawk Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+								PlayerInventory[i].SlotNo
+							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk2.png" alt="Handgun LightningHawk Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
 						else if (PlayerInventory[i].Attachments == 3) {
 							newData[
-								PlayerInventory[i].SlotPosition
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk3.png" alt="Handgun LightningHawk First, Second"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+								PlayerInventory[i].SlotNo
+							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk3.png" alt="Handgun LightningHawk First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
 						else {
 							newData[
-								PlayerInventory[i].SlotPosition
-							] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk.png" alt="Handgun LightningHawk"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+								PlayerInventory[i].SlotNo
+							] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk.png" alt="Handgun LightningHawk"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 						}
 					break;
 
 				case 41:
 					equipped = Equipped(data, 41);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/EMF_Visualizer.png" alt="EMF Visualizer"/><div class="quantity">∞</div></div>`;
 					break;
 
@@ -1471,13 +1471,13 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 42);
 					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM791.png" alt="GrenadeLauncher GM79 First?"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM791.png" alt="GrenadeLauncher GM79 First?"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM79.png" alt="GrenadeLauncher GM79"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM79.png" alt="GrenadeLauncher GM79"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					
 				break;
@@ -1486,13 +1486,13 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 43);
 					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower2.png" alt="Chemical Flamethrower First"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower2.png" alt="Chemical Flamethrower First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower.png" alt="Chemical Flamethrower"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower.png" alt="Chemical Flamethrower"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 				break;
 
@@ -1500,112 +1500,112 @@ function RE2RGetItems(data) {
 					equipped = Equipped(data, 44);
 					if (PlayerInventory[i].Attachments == 1 || PlayerInventory[i].Attachments == 2) {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot1.png" alt="SparkShot First?"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot1.png" alt="SparkShot First?"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 					else {
 						newData[
-							PlayerInventory[i].SlotPosition
-						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot.png" alt="SparkShot"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot.png" alt="SparkShot"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
 				break;
 
 				case 45:
 					equipped = Equipped(data, 45);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ATM4.png" alt="ATM4"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ATM4.png" alt="ATM4"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 46:
 					equipped = Equipped(data, 46);
-					let perc = Math.floor((PlayerInventory[i].Quantity / 1000) * 100);
+					let perc = Math.floor((PlayerInventory[i].Count / 1000) * 100);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/CombatKnife.png" alt="Combat Knife"/><div class="quantity">${perc}%</div></div>`;
 				break;
 
 				case 47:
 					equipped = Equipped(data, 47);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/CombatKnife_Infinite.png" alt="Combat Knife Infinite"/><div class="quantity">∞</div></div>`;
 				break;
 
 				case 49:
 					equipped = Equipped(data, 49);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/AntiTankRocketLauncher.png" alt="Anti Tank Rocket Launcher"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/AntiTankRocketLauncher.png" alt="Anti Tank Rocket Launcher"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 50:
 					equipped = Equipped(data, 50);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Minigun.png" alt="Minigun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Minigun.png" alt="Minigun"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 65:
 					equipped = Equipped(data, 65);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/HandGrenade.png" alt="Hand Grenade"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/HandGrenade.png" alt="Hand Grenade"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 66:
 					equipped = Equipped(data, 66);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/FlashGrenade.png" alt="Flash Grenade"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/FlashGrenade.png" alt="Flash Grenade"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 82:
 					equipped = Equipped(data, 82);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_Infinite.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_Infinite.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 83:
 					equipped = Equipped(data, 83);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_ChrisRedfield.png" alt="Handgun Samurai Edge Chris Redfield"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_ChrisRedfield.png" alt="Handgun Samurai Edge Chris Redfield"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 84:
 					equipped = Equipped(data, 84);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_JillValentine.png" alt="Handgun Samurai Edge Jill Valentine"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_JillValentine.png" alt="Handgun Samurai Edge Jill Valentine"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 85:
 					equipped = Equipped(data, 85);
 					newData[
-						PlayerInventory[i].SlotPosition
-					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_AlbertWesker.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
+						PlayerInventory[i].SlotNo
+					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_AlbertWesker.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 				break;
 
 				case 222:
 					equipped = Equipped(data, 222);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/ATM4.png" alt="ATM4 Infinite"/><div class="quantity">∞</div></div>`;
 				break;
 
 				case 242:
 					equipped = Equipped(data, 242);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/AntiTankRocketLauncher.png" alt="Anti Tank Rocket Launcher Infinite"/><div class="quantity">∞</div></div>`;
 				break;
 
 				case 252:
 					equipped = Equipped(data, 252);
 					newData[
-						PlayerInventory[i].SlotPosition
+						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Minigun.png" alt="Minigun Infinite"/><div class="quantity">∞</div></div>`;
 				break;
 
@@ -1618,11 +1618,11 @@ function RE2RGetItems(data) {
 
 function Equipped(data, i) {
 
-	if (i == data.PlayerInventoryMainEquipped) {
+	if (i == data.MainSlot.WeaponId) {
 		return "main"
 	}
 
-	else if (i == data.PlayerInventorySubEquipped) {
+	else if (i == data.SubSlot.WeaponId) {
 		return "sub"
 	}
 
@@ -1635,19 +1635,19 @@ function Equipped(data, i) {
 
 function SlotEquipped(data, i) {
 
-	if (i == data.PlayerInventorySlot1) {
+	if (i == data.Shortcuts[0].WeaponId) {
 		return "slot1"
 	}
 
-	else if (i == data.PlayerInventorySlot2) {
+	else if (i == data.Shortcuts[1].WeaponId) {
 		return "slot2"
 	}
 
-	else if (i == data.PlayerInventorySlot3) {
+	else if (i == data.Shortcuts[2].WeaponId) {
 		return "slot3"
 	}
 
-	else if (i == data.PlayerInventorySlot4) {
+	else if (i == data.Shortcuts[3].WeaponId) {
 		return "slot4"
 	}
 
