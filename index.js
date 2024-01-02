@@ -411,17 +411,18 @@ function RE2GetInventory(data) {
 function RE2RGetItems(data) {
 	var mainContainer = document.getElementById("inventoryRER");
 	mainContainer.innerHTML = "";
+
+	PlayerInventory = data.Items;
 	
-	if (data.PlayerInventory[0].SlotNo == null) {
+	if (PlayerInventory[0].SlotNo == null) {
 		mainContainer.innerHTML = `<div class="emptyslot"></div>`;
 		return;
 	}
-	PlayerInventory = data.Items;
 	
 	PlayerInventory.sort(function (a, b) {
 		return Asc(a.SlotNo, b.SlotNo);
 	});
-	//console.log(`Inventory: ${PlayerInventory}`);
+	//console.log(`Inventory: ${Items}`);
 	
 	InventoryCount = data.InventoryCount;
 
