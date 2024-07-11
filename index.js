@@ -370,7 +370,7 @@ function RE1RGetInventory(data) {
 const RE2ItemImage = (itemId) => `<img src="RE2C/${pad(itemId)}.bmp"></img>`;
 
 function RE2GetItems(data) {
-	const ItemEnumeration: Object.freeze({
+	const ItemEnumeration = Object.freeze({
 		None: 0,
 		Knife: 1,
 		HandgunLeon: 2,
