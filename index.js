@@ -380,8 +380,28 @@ function RE2GetItems(data) {
 	//Inventory Display
 	let inventory = '<div class="inventory">';
 	Inventory.map(item => {
-		let quantity = item.ItemID <= 18 && item.ItemID >= 2? item.Quantity : "";
-		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
+		//let quantity = item.ItemID <= 18 && item.ItemID >= 2? item.Quantity : "";
+		//inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
+		let quantityString = item.Quantity == 255 ? "∞" : item.Quantity != 0 ? item.Quantity : "";
+		let color = "#00FF00";
+		switch (item.ItemID)
+		{
+			case Number(ItemEnumeration.GrenadeLauncherNormal):
+			case Number(ItemEnumeration.Flamethrower):
+			case Number(ItemEnumeration.FlamethrowerFuel):
+			case Number(ItemEnumeration.GrenadeNormalRounds):
+				color = "#008B8B";
+				break;
+			case Number(ItemEnumeration.GrenadeLauncherFlame):
+			case Number(ItemEnumeration.GrenadeFlameRounds):
+				color = "#B22222";
+				break;
+			case Number(ItemEnumeration.GrenadeLauncherAcid):
+			case Number(ItemEnumeration.GrenadeAcidRounds):
+				color = "#008000";
+				break;
+		}
+		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantity}</font></div></div>`
 	});
     inventory += "</div>"
     mainContainer.innerHTML += inventory;
