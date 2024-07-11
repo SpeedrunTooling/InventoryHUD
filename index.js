@@ -382,10 +382,44 @@ function RE2GetItems(data) {
 	Inventory.map(item => {
 		//let quantity = item.ItemID <= 18 && item.ItemID >= 2? item.Quantity : "";
 		//inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
-		let quantityString = item.Quantity == 255 ? "∞" : item.Quantity != 0 ? item.Quantity : "";
-		let color = "#00FF00";
+		let quantity = "";
+		let color = "";
+		
+		if (item.Quantity == 255)
+		{
+			quantity = "∞";
+		}
+		else if (item.Quantity != 0)
+		{
+			quantity = item.Quantity;
+		}
+		
 		switch (item.ItemID)
 		{
+			case Number(ItemEnumeration.HandgunLeon):
+			case Number(ItemEnumeration.HandgunClaire):
+			case Number(ItemEnumeration.HandgunCustomLeon):
+			case Number(ItemEnumeration.Magnum):
+			case Number(ItemEnumeration.MagnumCustom):
+			case Number(ItemEnumeration.Shotgun):
+			case Number(ItemEnumeration.ShotgunCustom):
+			case Number(ItemEnumeration.Bowgun):
+			case Number(ItemEnumeration.ColtSAA):
+			case Number(ItemEnumeration.SparkShot):
+			case Number(ItemEnumeration.SubMachineGun):
+			case Number(ItemEnumeration.RocketLauncher):
+			case Number(ItemEnumeration.GatlingGun):
+			case Number(ItemEnumeration.BerettaMP5Broken):
+			case Number(ItemEnumeration.HandgunBullets):
+			case Number(ItemEnumeration.ShotgunShells):
+			case Number(ItemEnumeration.MagnumBullets):
+			case Number(ItemEnumeration.MachineGunBullets):
+			case Number(ItemEnumeration.SparkShotBullets):
+			case Number(ItemEnumeration.BowgunBolts):
+			case Number(ItemEnumeration.InkRibbon):
+			case Number(ItemEnumeration.SmallKey):
+				color = "#00FF00";
+				break;
 			case Number(ItemEnumeration.GrenadeLauncherNormal):
 			case Number(ItemEnumeration.Flamethrower):
 			case Number(ItemEnumeration.FlamethrowerFuel):
@@ -400,8 +434,12 @@ function RE2GetItems(data) {
 			case Number(ItemEnumeration.GrenadeAcidRounds):
 				color = "#008000";
 				break;
+			default:
+				color = "#FFFFFF";
+				break;
 		}
-		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantityString}</font></div></div>`
+		
+		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantity}</font></div></div>`
 	});
     inventory += "</div>"
     mainContainer.innerHTML += inventory;
