@@ -485,16 +485,12 @@ function RE2GetItems(data) {
 	Inventory.map(item => {
 		//let quantity = item.ItemID <= 18 && item.ItemID >= 2? item.Quantity : "";
 		//inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
-		let quantity = "";
+		let quantity = item.Quantity;
 		let color = "";
 		
 		if (item.Quantity == 255)
 		{
 			quantity = "∞";
-		}
-		else if (item.Quantity != 0)
-		{
-			quantity = item.Quantity;
 		}
 		
 		switch (item.ItemID)
@@ -539,6 +535,7 @@ function RE2GetItems(data) {
 				break;
 			default:
 				color = "#FFFFFF";
+				quantity = "";
 				break;
 		}
 		
