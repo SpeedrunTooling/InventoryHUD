@@ -401,7 +401,7 @@ function RE2GetItems(data) {
 				color = "#008000";
 				break;
 		}
-		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantity}</font></div></div>`
+		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantityString}</font></div></div>`
 	});
     inventory += "</div>"
     mainContainer.innerHTML += inventory;
