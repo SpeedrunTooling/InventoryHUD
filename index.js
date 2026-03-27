@@ -70,29 +70,28 @@ function getData() {
 }
 
 function GetCSS(name) {
-	if (!document.getElementById('myCss'))
-	{
+	if (!document.getElementById('myCss')) {
 		currentGameName = name;
-	    var head  = document.getElementsByTagName('head')[0];
-	    var link  = document.createElement('link');
-	    link.id   = 'myCss';
-	    link.rel  = 'stylesheet';
-	    link.type = 'text/css';
-	    link.href = name + ".css";
-	    link.media = 'all';
+		var head = document.getElementsByTagName('head')[0];
+		var link = document.createElement('link');
+		link.id = 'myCss';
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = name + ".css";
+		link.media = 'all';
 		head.appendChild(link);
 		return;
 	}
-	else if (currentGameName != name){
+	else if (currentGameName != name) {
 		document.getElementById('myCss').remove();
 		currentGameName = name;
-	    var head  = document.getElementsByTagName('head')[0];
-	    var link  = document.createElement('link');
-	    link.id   = cssId;
-	    link.rel  = 'stylesheet';
-	    link.type = 'text/css';
-	    link.href = name + ".css";
-	    link.media = 'all';
+		var head = document.getElementsByTagName('head')[0];
+		var link = document.createElement('link');
+		link.id = cssId;
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = name + ".css";
+		link.media = 'all';
 		head.appendChild(link);
 		return;
 	}
@@ -116,19 +115,16 @@ function appendData(data) {
 	var re8Container = document.getElementById("inventory");
 	re8Container.innerHTML = "";
 
-	if (data.GameName != "RE5") 
-	{
+	if (data.GameName != "RE5") {
 		player1Container.style.background = "none";
 		player2Container.style.background = "none";
 	}
-	else if (data.GameName == "RE5")
-	{
-		player1Container.style.background = "url(https://cdn.discordapp.com/attachments/845799949312196618/854475812232626216/unknown.png)";
-		player2Container.style.background = "url(https://cdn.discordapp.com/attachments/845799949312196618/854475812232626216/unknown.png)";
+	else if (data.GameName == "RE5") {
+		player1Container.style.backgroundImage = "url(RE5/Inventory.png)";
+		player2Container.style.backgroundImage = "url(RE5/Inventory.png)";
 	}
 
-	switch (data.GameName)
-	{
+	switch (data.GameName) {
 		case "Dino Crisis 1 Rebirth":
 			DC1RGetSupplies(data);
 			return;
@@ -180,13 +176,11 @@ function appendData(data) {
 // DINO CRISIS 1 REBIRTH
 const DC1ItemImage = (item) => `<img class="item" src="Dino Crisis 1 Rebirth/${item.ID}.svg"></img>`;
 
-function DC1RGetSupplies(data)
-{
+function DC1RGetSupplies(data) {
 	let mainContainer = document.getElementById("srtQueryData");
 	let children = "";
 	data.PlayerSupplies.map(item => {
-		if (item.Quantity == 0)
-		{
+		if (item.Quantity == 0) {
 			children += `
 			<div class="item-slot">
 				<div class="item-data">
@@ -195,8 +189,7 @@ function DC1RGetSupplies(data)
 				</div>
 			</div>`;
 		}
-		else
-		{
+		else {
 			children += `
 			<div class="item-slot">
 				<div class="item-data">
@@ -210,8 +203,7 @@ function DC1RGetSupplies(data)
 }
 
 // RESIDENT EVIL: REVELATIONS 1
-function REV1GetItems(data)
-{
+function REV1GetItems(data) {
 	let mainContainer = document.getElementById("srtQueryData");
 	mainContainer.innerHTML = "";
 
@@ -226,8 +218,7 @@ function REV1GetItems(data)
 // RESIDENT EVIL: REVELATIONS 2
 const REV2ItemImage = (item) => `<img class="item" src="REREV2/${item.ID}.png"></img>`;
 
-function REV2GetItems(data)
-{
+function REV2GetItems(data) {
 	let mainContainer = document.getElementById("srtQueryData");
 	mainContainer.innerHTML = "";
 
@@ -260,7 +251,7 @@ const RE0PItem2Image = (item) => `<img class="personal-item2" src="RE0/${item.ID
 function RE0GetItems(data) {
 	let mainContainer = document.getElementById("srtQueryData");
 	mainContainer.innerHTML = "";
-	
+
 	mainContainer.innerHTML += `<div class="background"></div>`;
 	mainContainer.innerHTML += `<div class="personal">${RE0PItemImage(data.CurrentPersonal)}</div>`;
 	mainContainer.innerHTML += `<div class="personal2">${RE0PItem2Image(data.CurrentPersonal2)}</div>`;
@@ -275,7 +266,7 @@ function RE0GetItems(data) {
 	mainContainer.innerHTML += `<div class="inventory">${inventory}</div>`;
 
 	mainContainer.innerHTML += `<div class="equipped-item"><img class=${data.CurrentWeapon.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon.ID}.png"></img><div class=${data.CurrentWeapon.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font class="lightgreen">${data.CurrentWeapon.HasQuantity ? data.CurrentWeapon.Quantity : ""}</font></div></div>`;
-	
+
 	let inventory2 = '';
 
 	data.PlayerInventory2.map(item => {
@@ -285,7 +276,7 @@ function RE0GetItems(data) {
 	});
 
 	mainContainer.innerHTML += `<div class="inventory2">${inventory2}</div>`;
-	
+
 	mainContainer.innerHTML += `<div class="equipped-item2"><img class=${data.CurrentWeapon2.Is2Slots ? "e-item2" : "e-item"} src="RE0/${data.CurrentWeapon2.ID}.png"></img><div class=${data.CurrentWeapon2.Is2Slots ? "equipped-item-quantity2" : "equipped-item-quantity"}><font class="lightgreen">${data.CurrentWeapon2.HasQuantity ? data.CurrentWeapon2.Quantity : ""}</font></div></div>`;
 }
 
@@ -303,19 +294,16 @@ function RE1GetItems(data) {
 	//Inventory Display
 	let inventory = '<div class="inventory">';
 	Inventory.map(item => {
-		let quantity = item.ItemID <= 18 && item.ItemID >= 2? item.Quantity : "";
+		let quantity = item.ItemID <= 18 && item.ItemID >= 2 ? item.Quantity : "";
 		inventory += `<div class="inventory-item">${RE1ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
 	});
-    inventory += "</div>"
-    mainContainer.innerHTML += inventory;
+	inventory += "</div>"
+	mainContainer.innerHTML += inventory;
 }
 
-function RE1GetCurrentItemAmmo(inventory, currentWeaponID) 
-{
-	for (let i = 0; i < inventory.length; i++) 
-	{
-		if (inventory[i].ItemID == currentWeaponID)
-		{
+function RE1GetCurrentItemAmmo(inventory, currentWeaponID) {
+	for (let i = 0; i < inventory.length; i++) {
+		if (inventory[i].ItemID == currentWeaponID) {
 			let quantity = inventory[i].ItemID <= 18 && inventory[i].ItemID >= 2 ? inventory[i].Quantity : "";
 			return quantity;
 		}
@@ -323,8 +311,7 @@ function RE1GetCurrentItemAmmo(inventory, currentWeaponID)
 }
 
 function RE1GetInventory(data) {
-	if (data.PlayerMaxHealth == 140) 
-	{
+	if (data.PlayerMaxHealth == 140) {
 		return data.PlayerInventory.slice(0, 6);
 	}
 	return data.PlayerInventory;
@@ -337,19 +324,17 @@ function RE1RGetItems(data) {
 	let mainContainer = document.getElementById("srtQueryData");
 	let Inventory = RE1RGetInventory(data);
 	mainContainer.innerHTML = "";
-	if (data.mStartPlayer == 0) 
-	{
+	if (data.mStartPlayer == 0) {
 		mainContainer.innerHTML += `<div class="backgroundChris"></div>`;
 		mainContainer.innerHTML += `<div class="equipped-item-chris"><img class="e-item" src="RE1R/${data.Inventory[Inventory.length + 1].Item}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.Inventory[Inventory.length + 1].Quantity}</font></div></div>`;
 	}
-	else 
-	{
+	else {
 		mainContainer.innerHTML += `<div class="backgroundJill"></div>`;
 		mainContainer.innerHTML += `<div class="equipped-item-jill"><img class="e-item" src="RE1R/${data.Inventory[Inventory.length + 1].Item}.png"></img><div class="inventory-item-quantity2"><font color="#00FF00">${data.Inventory[Inventory.length + 1].Quantity}</font></div></div>`;
 	}
 
 	//Equipped Weapon
-	
+
 
 	//Inventory Display
 	let inventory = '<div class="inventory">';
@@ -357,8 +342,8 @@ function RE1RGetItems(data) {
 		let quantity = item.Quantity != 0 ? item.Quantity : "";
 		inventory += `<div class="inventory-item">${RE1RItemImage(item.Item)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
 	});
-    inventory += "</div>"
-    mainContainer.innerHTML += inventory;
+	inventory += "</div>"
+	mainContainer.innerHTML += inventory;
 }
 
 function RE1RGetInventory(data) {
@@ -472,7 +457,7 @@ function RE2GetItems(data) {
 		MasterKey: 98,
 		PlatformKey: 99
 	});
-	
+
 	let mainContainer = document.getElementById("srtQueryData");
 	let Inventory = RE2GetInventory(data);
 	mainContainer.innerHTML = "";
@@ -487,14 +472,12 @@ function RE2GetItems(data) {
 		//inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`
 		let quantity = item.Quantity;
 		let color = "";
-		
-		if (item.Quantity == 255)
-		{
+
+		if (item.Quantity == 255) {
 			quantity = "∞";
 		}
-		
-		switch (item.ItemID)
-		{
+
+		switch (item.ItemID) {
 			case Number(ItemEnumeration.HandgunLeon):
 			case Number(ItemEnumeration.HandgunClaire):
 			case Number(ItemEnumeration.HandgunCustomLeon):
@@ -538,19 +521,16 @@ function RE2GetItems(data) {
 				quantity = "";
 				break;
 		}
-		
+
 		inventory += `<div class="inventory-item">${RE2ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="${color}">${quantity}</font></div></div>`
 	});
-    inventory += "</div>"
-    mainContainer.innerHTML += inventory;
+	inventory += "</div>"
+	mainContainer.innerHTML += inventory;
 }
 
-function RE2GetCurrentItemAmmo(inventory, currentWeaponID) 
-{
-	for (let i = 0; i < inventory.length; i++) 
-	{
-		if (inventory[i].ItemID == currentWeaponID)
-		{
+function RE2GetCurrentItemAmmo(inventory, currentWeaponID) {
+	for (let i = 0; i < inventory.length; i++) {
+		if (inventory[i].ItemID == currentWeaponID) {
 			let quantity = inventory[i].ItemID <= 18 && inventory[i].ItemID >= 2 ? inventory[i].Quantity : "";
 			return quantity;
 		}
@@ -558,8 +538,7 @@ function RE2GetCurrentItemAmmo(inventory, currentWeaponID)
 }
 
 function RE2GetInventory(data) {
-	if (data.PlayerMaxHealth == 140) 
-	{
+	if (data.PlayerMaxHealth == 140) {
 		return data.PlayerInventory.slice(0, 6);
 	}
 	return data.PlayerInventory;
@@ -571,17 +550,17 @@ function RE2RGetItems(data) {
 	mainContainer.innerHTML = "";
 
 	PlayerInventory = data.Items;
-	
+
 	if (PlayerInventory[0].SlotNo == null) {
 		mainContainer.innerHTML = `<div class="emptyslot"></div>`;
 		return;
 	}
-	
+
 	PlayerInventory.sort(function (a, b) {
 		return Asc(a.SlotNo, b.SlotNo);
 	});
 	//console.log(`Inventory: ${Items}`);
-	
+
 	InventoryCount = data.InventoryCount;
 
 	var newData = [];
@@ -732,7 +711,7 @@ function RE2RGetItems(data) {
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/Fuel.png" alt="Fuel"><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					break;
-					
+
 				case 26:
 					newData[
 						PlayerInventory[i].SlotNo
@@ -948,7 +927,7 @@ function RE2RGetItems(data) {
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/MedallionUnicorn.png" alt="Medallion Unicorn"/></div>`;
 					break;
-					
+
 				case 82:
 					newData[
 						PlayerInventory[i].SlotNo
@@ -1008,7 +987,7 @@ function RE2RGetItems(data) {
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/PlugRook.png" alt="Plug Rook"/></div>`;
 					break;
-					
+
 				case 95:
 					newData[
 						PlayerInventory[i].SlotNo
@@ -1206,7 +1185,7 @@ function RE2RGetItems(data) {
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/IDWristbandAdministrator.png" alt="ID Wristband Administrator"/></div>`;
 					break;
-					
+
 				case 188:
 					newData[
 						PlayerInventory[i].SlotNo
@@ -1374,7 +1353,7 @@ function RE2RGetItems(data) {
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><img src="RE2R/JointPlug.png" alt="Joint Plug 2"/></div>`;
 					break;
-					
+
 				case 2130706434:
 					newData[
 						PlayerInventory[i].SlotNo
@@ -1390,7 +1369,7 @@ function RE2RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div></div><img src="RE2R/Handgun_Matilda1.png" alt="Handgun Matilda First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
@@ -1400,7 +1379,7 @@ function RE2RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda3.png" alt="Handgun Matilda First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 4) {
 						newData[
 							PlayerInventory[i].SlotNo
@@ -1408,9 +1387,9 @@ function RE2RGetItems(data) {
 					}
 					else if (PlayerInventory[i].WeaponParts == 5) {
 						newData[
-							PlayerInventory[i].S*lotPosition
+							PlayerInventory[i].S * lotPosition
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda5.png" alt="Handgun Matilda First Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 6) {
 						newData[
 							PlayerInventory[i].SlotNo
@@ -1420,7 +1399,7 @@ function RE2RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_Matilda7.png" alt="Handgun Matilda First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else {
 						newData[
 							PlayerInventory[i].SlotNo
@@ -1441,7 +1420,7 @@ function RE2RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_1.png" alt="Handgun JMB Hp3 First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 2) {
 						newData[
 							PlayerInventory[i].SlotNo
@@ -1451,33 +1430,33 @@ function RE2RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 4) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 5) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 6) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].WeaponParts == 7) {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3_3.png" alt="Handgun JMB Hp3 First, Second, Third"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-					} 
+					}
 					else {
 						newData[
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_JMB_Hp3.png" alt="Handgun JMB Hp3"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					
+
 					break;
 
 				case 4:
@@ -1562,7 +1541,7 @@ function RE2RGetItems(data) {
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Shotgun_W870.png" alt="Shotgun W870"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-				break;
+					break;
 
 				case 21:
 					equipped = Equipped(data, 21);
@@ -1586,7 +1565,7 @@ function RE2RGetItems(data) {
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/SMG_MQ11.png" alt="SMG MQ11"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-				break;
+					break;
 
 				case 23:
 					equipped = Equipped(data, 23);
@@ -1597,26 +1576,26 @@ function RE2RGetItems(data) {
 
 				case 31:
 					equipped = Equipped(data, 31);
-						if (PlayerInventory[i].WeaponParts == 1) {
-							newData[
-								PlayerInventory[i].SlotNo
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk1.png" alt="Handgun LightningHawk First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-						}
-						else if (PlayerInventory[i].WeaponParts == 2) {
-							newData[
-								PlayerInventory[i].SlotNo
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk2.png" alt="Handgun LightningHawk Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-						}
-						else if (PlayerInventory[i].WeaponParts == 3) {
-							newData[
-								PlayerInventory[i].SlotNo
-							] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk3.png" alt="Handgun LightningHawk First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-						}
-						else {
-							newData[
-								PlayerInventory[i].SlotNo
-							] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk.png" alt="Handgun LightningHawk"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-						}
+					if (PlayerInventory[i].WeaponParts == 1) {
+						newData[
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk1.png" alt="Handgun LightningHawk First"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
+					}
+					else if (PlayerInventory[i].WeaponParts == 2) {
+						newData[
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk2.png" alt="Handgun LightningHawk Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
+					}
+					else if (PlayerInventory[i].WeaponParts == 3) {
+						newData[
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk3.png" alt="Handgun LightningHawk First, Second"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
+					}
+					else {
+						newData[
+							PlayerInventory[i].SlotNo
+						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_LightningHawk.png" alt="Handgun LightningHawk"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
+					}
 					break;
 
 				case 41:
@@ -1638,8 +1617,8 @@ function RE2RGetItems(data) {
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/GrenadeLauncher_GM79.png" alt="GrenadeLauncher GM79"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-					
-				break;
+
+					break;
 
 				case 43:
 					equipped = Equipped(data, 43);
@@ -1653,7 +1632,7 @@ function RE2RGetItems(data) {
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ChemicalFlamethrower.png" alt="Chemical Flamethrower"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-				break;
+					break;
 
 				case 44:
 					equipped = Equipped(data, 44);
@@ -1667,14 +1646,14 @@ function RE2RGetItems(data) {
 							PlayerInventory[i].SlotNo
 						] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/SparkShot.png" alt="SparkShot"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
 					}
-				break;
+					break;
 
 				case 45:
 					equipped = Equipped(data, 45);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot2"><div class=${equipped}></div><img src="RE2R/ATM4.png" alt="ATM4"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 46:
 					equipped = Equipped(data, 46);
@@ -1682,91 +1661,91 @@ function RE2RGetItems(data) {
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/CombatKnife.png" alt="Combat Knife"/><div class="quantity">${perc}%</div></div>`;
-				break;
+					break;
 
 				case 47:
 					equipped = Equipped(data, 47);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/CombatKnife_Infinite.png" alt="Combat Knife Infinite"/><div class="quantity">∞</div></div>`;
-				break;
+					break;
 
 				case 49:
 					equipped = Equipped(data, 49);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/AntiTankRocketLauncher.png" alt="Anti Tank Rocket Launcher"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 50:
 					equipped = Equipped(data, 50);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Minigun.png" alt="Minigun"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 65:
 					equipped = Equipped(data, 65);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/HandGrenade.png" alt="Hand Grenade"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 66:
 					equipped = Equipped(data, 66);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/FlashGrenade.png" alt="Flash Grenade"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 82:
 					equipped = Equipped(data, 82);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_Infinite.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 83:
 					equipped = Equipped(data, 83);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_ChrisRedfield.png" alt="Handgun Samurai Edge Chris Redfield"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 84:
 					equipped = Equipped(data, 84);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_JillValentine.png" alt="Handgun Samurai Edge Jill Valentine"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 85:
 					equipped = Equipped(data, 85);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Handgun_SamuraiEdge_AlbertWesker.png" alt="Handgun Samurai Edge Albert Wesker"/><div class="quantity">${PlayerInventory[i].Count}</div></div>`;
-				break;
+					break;
 
 				case 222:
 					equipped = Equipped(data, 222);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/ATM4.png" alt="ATM4 Infinite"/><div class="quantity">∞</div></div>`;
-				break;
+					break;
 
 				case 242:
 					equipped = Equipped(data, 242);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/AntiTankRocketLauncher.png" alt="Anti Tank Rocket Launcher Infinite"/><div class="quantity">∞</div></div>`;
-				break;
+					break;
 
 				case 252:
 					equipped = Equipped(data, 252);
 					newData[
 						PlayerInventory[i].SlotNo
 					] = `<div class="inventoryslot"><div class=${equipped}></div><img src="RE2R/Minigun.png" alt="Minigun Infinite"/><div class="quantity">∞</div></div>`;
-				break;
+					break;
 
 			}
 		}
@@ -1836,27 +1815,26 @@ function RE3GetItems(data) {
 	//Inventory Display
 	let inventory = '<div class="inventory">';
 	data.PlayerInventory.map(item => {
-		var quantity = (item.ItemType != 0 && item.ItemType != 15 && item.ItemType != 22) 
-		? item.Quantity : 
-		item.ItemType == 15 
-		? `<div class="infinity">∞</div>` : 
-		item.ItemType == 22 
-		? `${item.Quantity}%` : "";
+		var quantity = (item.ItemType != 0 && item.ItemType != 15 && item.ItemType != 22)
+			? item.Quantity :
+			item.ItemType == 15
+				? `<div class="infinity">∞</div>` :
+				item.ItemType == 22
+					? `${item.Quantity}%` : "";
 		inventory += `<div class="inventory-item">${RE3ItemImage(item.ItemID)}<div class="inventory-item-quantity"><font color="#00FF00">${quantity}</font></div></div>`;
 	});
-    inventory += "</div>"
-    mainContainer.innerHTML += inventory;
+	inventory += "</div>"
+	mainContainer.innerHTML += inventory;
 }
 
-function RE3GetCurrentItemAmmo(inventory, currentWeaponID) 
-{
+function RE3GetCurrentItemAmmo(inventory, currentWeaponID) {
 	var filteredItems = inventory.filter(item => { return (item.ItemID == currentWeaponID) });
-	var quantity = (filteredItems[0].ItemType != 0 && filteredItems[0].ItemType != 15 && filteredItems[0].ItemType != 22) 
-		? filteredItems[0].Quantity : 
-		filteredItems[0].ItemType == 15 
-		? `<div class="infinity">∞</div>` : 
-		filteredItems[0].ItemType == 22 
-		? `${filteredItems[0].Quantity}%` : "";
+	var quantity = (filteredItems[0].ItemType != 0 && filteredItems[0].ItemType != 15 && filteredItems[0].ItemType != 22)
+		? filteredItems[0].Quantity :
+		filteredItems[0].ItemType == 15
+			? `<div class="infinity">∞</div>` :
+			filteredItems[0].ItemType == 22
+				? `${filteredItems[0].Quantity}%` : "";
 	return quantity;
 }
 
@@ -2286,7 +2264,7 @@ function RE3RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/G19Handgun1.png" alt="G19 Handgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 2)
 						newData[
 							PlayerInventory[i].SlotPosition
@@ -2295,7 +2273,7 @@ function RE3RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/G19Handgun3.png" alt="G19 Handgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 4)
 						newData[
 							PlayerInventory[i].SlotPosition
@@ -2304,7 +2282,7 @@ function RE3RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/G19Handgun5.png" alt="G19 Handgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 6)
 						newData[
 							PlayerInventory[i].SlotPosition
@@ -2313,7 +2291,7 @@ function RE3RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/G19Handgun7.png" alt="G19 Handgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else
 						newData[
 							PlayerInventory[i].SlotPosition
@@ -2344,37 +2322,37 @@ function RE3RGetItems(data) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/M3Shotgun1.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 2) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot"><img src="RE3R/M3Shotgun2.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 3) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/M3Shotgun3.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 4) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot"><img src="RE3R/M3Shotgun4.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 5) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/M3Shotgun5.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 6) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot"><img src="RE3R/M3Shotgun6.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else if (PlayerInventory[i].Attachments == 7) {
 						newData[
 							PlayerInventory[i].SlotPosition
 						] = `<div class="inventoryslot2"><img src="RE3R/M3Shotgun7.png" alt="M3 Shotgun"/><div class="quantity">${PlayerInventory[i].Quantity}</div></div>`;
-					} 
+					}
 					else {
 						newData[
 							PlayerInventory[i].SlotPosition
@@ -2490,7 +2468,7 @@ function RE5GetItemsPlayer1(data) {
 	var filteredItems = data.PlayerInventory.filter((item) => {
 		return (item.IsItem && item.SlotNo < 9);
 	});
-	
+
 	filteredItems.sort(function (a, b) {
 		return Asc(a.SlotNo, b.SlotNo) || Desc(a.SlotNo, b.SlotNo);
 	}).map(item => {
@@ -2503,11 +2481,11 @@ function RE5GetItemsPlayer1(data) {
 function RE5GetItemsPlayer2(data) {
 	let mainContainer2 = document.getElementById("srtPlayer2");
 	mainContainer2.innerHTML = "";
-	
+
 	var filteredItems2 = data.Player2Inventory.filter((item) => {
 		return (item.IsItem && item.SlotNo < 9);
 	});
-	
+
 	filteredItems2.sort(function (a, b) {
 		return Asc(a.SlotNo, b.SlotNo) || Desc(a.SlotNo, b.SlotNo);
 	}).map(item => {
@@ -2519,102 +2497,60 @@ function RE5GetItemsPlayer2(data) {
 
 function RE5GetPlayer1(item) {
 	let mainContainer = document.getElementById("srtPlayer1");
+
+	let quantityColor = "#00FF00";
+
 	if (item.StackSize < item.MaxSize && item.StackSize != 0) {
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#FFFFFF">
-						${item.StackSize}
-					</font>
-				</div>
-				
-			</img>
-		</div>`;
-	} else if(item.StackSize == 0 && item.MaxSize >= 1){
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#FF0000">
-						${item.StackSize}
-					</font>
-				</div>
-				
-			</img>
-		</div>`;
-	} else {
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#00FF00">
-						${item.StackSize}
-					</font>
-				</div>
-			</img>
-		</div>`;
+		quantityColor = "#FFFFFF";
+	} else if (item.StackSize == 0 && item.MaxSize >= 1) {
+		quantityColor = "#FF0000";
 	}
-	if (item.EquippedState == 1) {
-		mainContainer.innerHTML += `
-		<div id="slot${item.SlotNo}">
-			<div class="equipped">
-				<font color="orange">
-					E
+
+	mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<div class="itemSprite" id="${item.ItemName}"></div>
+			<div class="quantity">
+				<font color="${quantityColor}">
+					${item.StackSize}
 				</font>
 			</div>
+			${item.EquippedState == 1 ? `
+				<div class="equipped">
+					<font color="orange">
+						E
+					</font>
+				</div>
+			` : ""}
 		</div>`;
-	}
 }
 
 function RE5GetPlayer2(item) {
 	let mainContainer = document.getElementById("srtPlayer2");
+
+	let quantityColor = "#00FF00";
+
 	if (item.StackSize < item.MaxSize && item.StackSize != 0) {
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#FFFFFF">
-						${item.StackSize}
-					</font>
-				</div>
-				
-			</img>
-		</div>`;
-	} else if(item.StackSize == 0 && item.MaxSize >= 1){
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#FF0000">
-						${item.StackSize}
-					</font>
-				</div>
-				
-			</img>
-		</div>`;
-	} else {
-		mainContainer.innerHTML += `
-		<div class="item" id="slot${item.SlotNo}">
-			<img id="${item.ItemName}">
-				<div class="quantity">
-					<font color="#00FF00">
-						${item.StackSize}
-					</font>
-				</div>
-			</img>
-		</div>`;
+		quantityColor = "#FFFFFF";
+	} else if (item.StackSize == 0 && item.MaxSize >= 1) {
+		quantityColor = "#FF0000";
 	}
-	if (item.EquippedState == 1) {
-		mainContainer.innerHTML += `
-		<div id="slot${item.SlotNo}">
-			<div class="equipped2">
-				<font color="orange">
-					E
+
+	mainContainer.innerHTML += `
+		<div class="item" id="slot${item.SlotNo}">
+			<div class="itemSprite" id="${item.ItemName}"></div>
+			<div class="quantity">
+				<font color="${quantityColor}">
+					${item.StackSize}
 				</font>
 			</div>
+			${item.EquippedState == 1 ? `
+				<div class="equipped2">
+					<font color="orange">
+						E
+					</font>
+				</div>
+			` : ""}
 		</div>`;
-	}
 }
 
 // RESIDENT EVIL 7
@@ -2656,8 +2592,7 @@ function RE7GetItems(data) {
 	});
 
 	PlayerInventory.map(item => {
-		if (item.SlotPosition != -1)
-		{
+		if (item.SlotPosition != -1) {
 			SortedInventory[item.SlotPosition] = item;
 		}
 	});
@@ -2697,7 +2632,7 @@ function RE7GetItems(data) {
 		}
 		else if (SortedInventory[i].IsWeapon) {
 			if (SortedInventory[i].SlotCount == 2 && SortedInventory[i].SlotPosition > 3) {
-			newData[SortedInventory[i].SlotPosition] = `<div class="inventoryslot2" id="slot${i}"><img src="./RE7/${SortedInventory[i].ItemName}.png" alt=${SortedInventory[i].ItemName}/></div>`;
+				newData[SortedInventory[i].SlotPosition] = `<div class="inventoryslot2" id="slot${i}"><img src="./RE7/${SortedInventory[i].ItemName}.png" alt=${SortedInventory[i].ItemName}/></div>`;
 			}
 			else if (SortedInventory[i].SlotCount == 2 && SortedInventory[i].SlotPosition <= 3) {
 				newData[SortedInventory[i].SlotPosition] = `<div class="inventoryslot2H" id="slot${i}"><img src="./RE7/${SortedInventory[i].ItemName}H.png" alt=${SortedInventory[i].ItemName}/></div>`;
@@ -2717,8 +2652,7 @@ function RE7GetItems(data) {
 }
 
 function resetInventory() {
-	for (var i = 0; i < InventoryCount; i++) 
-	{
+	for (var i = 0; i < InventoryCount; i++) {
 		SortedInventory[i] = defaultItemObject;
 		SortedInventory[i].SlotPosition = i;
 	}
@@ -2735,7 +2669,7 @@ function RE8GetItems(data) {
 	var keyItems = data.PlayerInventory.filter((item) => {
 		return item.IsKeyItem && item.ItemName == "ExtraBaggage";
 	});
-	
+
 	//console.log(keyItems);
 
 	if (keyItems.length == 1) {
@@ -2767,9 +2701,8 @@ function DebugMe(data) {
 			16
 		).toUpperCase()}`;
 	} else {
-		first.innerHTML = `First Item - ${
-			firstItem.ItemName
-		}: 0x${firstItem.ItemID.toString(16).toUpperCase()}`;
+		first.innerHTML = `First Item - ${firstItem.ItemName
+			}: 0x${firstItem.ItemID.toString(16).toUpperCase()}`;
 	}
 
 	let lastItem = GetLastItems(data.PlayerInventory);
@@ -2778,9 +2711,8 @@ function DebugMe(data) {
 			16
 		).toUpperCase()}`;
 	} else {
-		last.innerHTML = `Last Item - ${
-			lastItem.ItemName
-		}: 0x${lastItem.ItemID.toString(16).toUpperCase()}`;
+		last.innerHTML = `Last Item - ${lastItem.ItemName
+			}: 0x${lastItem.ItemID.toString(16).toUpperCase()}`;
 	}
 }
 
@@ -2800,26 +2732,26 @@ function SetItems(item) {
 		item.QuickSlotHash == 4093525667
 			? `<div class="Equip1"></div>`
 			: item.QuickSlotHash == 2032792067
-			? `<div class="Equip2"></div>`
-			: item.QuickSlotHash == 249966296
-			? `<div class="Equip3"></div>`
-			: item.QuickSlotHash == 2311674127
-			? `<div class="Equip4"></div>`
-			: "";
+				? `<div class="Equip2"></div>`
+				: item.QuickSlotHash == 249966296
+					? `<div class="Equip3"></div>`
+					: item.QuickSlotHash == 2311674127
+						? `<div class="Equip4"></div>`
+						: "";
 	var MaxStackSize =
 		item.CustomParameter.StackSize + item.CustomParameter.ExtendedStackSize;
 	var ColorStack =
-			MaxStackSize == 1 ? `` :
-		item.StackSize == MaxStackSize
-			? `<div class="quantity"><font color="#00FF00">${item.StackSize}</font></div>`
-			: `<div class="quantity">${item.StackSize}</div>`;
+		MaxStackSize == 1 ? `` :
+			item.StackSize == MaxStackSize
+				? `<div class="quantity"><font color="#00FF00">${item.StackSize}</font></div>`
+				: `<div class="quantity">${item.StackSize}</div>`;
 	var ColorIncludedStack =
-			MaxStackSize == 1 ? `` :
-		item.IncludeStackSize == MaxStackSize
-			? `<div class="quantity"><font color="#00FF00">${item.IncludeStackSize}</font></div>`
-			: item.IncludeStackSize < MaxStackSize / 4
-			? `<div class="quantity"><font color="#FF0000">${item.IncludeStackSize}</font></div>`
-			: `<div class="quantity">${item.IncludeStackSize}</div>`;
+		MaxStackSize == 1 ? `` :
+			item.IncludeStackSize == MaxStackSize
+				? `<div class="quantity"><font color="#00FF00">${item.IncludeStackSize}</font></div>`
+				: item.IncludeStackSize < MaxStackSize / 4
+					? `<div class="quantity"><font color="#FF0000">${item.IncludeStackSize}</font></div>`
+					: `<div class="quantity">${item.IncludeStackSize}</div>`;
 	if (item.SlotNo < 9) {
 		if (item.IsItem) {
 			mainContainer.innerHTML += `

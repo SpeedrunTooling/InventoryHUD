@@ -38,7 +38,8 @@ font {
 	height: 320px;
 	top: 0px;
 	left: 50px;
-	background: url(https://cdn.discordapp.com/attachments/845799949312196618/854475812232626216/unknown.png);
+	background: url(RE5/Inventory.png);
+	background-size: contain;
 }
 
 #srtPlayer2 {
@@ -47,13 +48,21 @@ font {
 	height: 320px;
 	top: 0px;
 	right: 50px;
-	background: url(https://cdn.discordapp.com/attachments/845799949312196618/854475812232626216/unknown.png);
+	background-image: url(RE5/Inventory.png);
+	background-size: contain;
 }
 
 .item {
-	position: relative;
+	position: absolute;
 	width: 100px;
 	height: 100px;
+}
+
+.itemSprite {
+	width: 100px;
+	height: 100px;
+	background-repeat: no-repeat;
+	display: block;
 }
 
 .equipped {
@@ -65,7 +74,7 @@ font {
 }
 
 .equipped2 {
-	position: relative;
+	position: absolute;
 	width: 95px;
 	top: 0px;
 	font-size: 25px;
@@ -136,407 +145,401 @@ font {
 #HGAmmo {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) 0px 0px;
+	background: url(RE5/RE5_Item_Collection.png) 0px 0px;
 }
 
 #RifleAmmo {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -105px 0px;
 }
 
 #MGAmmo {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -205px 0px;
 }
 
 #SGAmmo {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -305px 0px;
 }
 
 #M92F {
 	width: 99px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -410px 0px;
 }
 
 #IthacaM37 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -515px 0px;
 }
 
 #SIG556 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -605px 0px;
 }
 
 #S75 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -705px 0px;
 }
 
 #HKP8 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -805px 0px;
 }
 
 #Unknown {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px 0px;
+	background: url(RE5/RE5_Item_Collection.png) -905px 0px;
 }
 
 #FAS {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -100px;
 }
 
 #GLEXP {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -205px -100px;
 }
 
 #GLACD {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -305px -100px;
 }
 
 #Knife {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -405px -100px;
 }
 
 #Longbow {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -100px;
 }
 
 #SWM29 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -100px;
 }
 
 #GL {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -100px;
 }
 
 #P226 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -100px;
 }
 
 #JailBreaker {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -100px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -100px;
 }
 
 #GLICE {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) 0px -200px;
+	background: url(RE5/RE5_Item_Collection.png) 5px -200px;
 }
 
 #HG  {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -200px;
 }
 
 #FG  {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -205px -200px;
 }
 
 #IG  {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -305px -200px;
 }
 
 #RL  {
 	width: 99px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -405px -200px;
 }
 
 #GLFLM {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -200px;
 }
 
 #GatlingGun {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -200px;
 }
 
 #GatlingGun {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -200px;
 }
 
 #MagnumAmmo {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -200px;
 }
 
 #VZ61 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -818px -200px;
 }
 
 #MP5 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -200px;
-}
-
-#MP5 {
-	width: 100px;
-	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -200px;
+	background: url(RE5/RE5_Item_Collection.png) -920px -200px;
 }
 
 #Light {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) 0px -300px;
+	background: url(RE5/RE5_Item_Collection.png) 5px -300px;
 }
 
 #HerbGG {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -300px;
 }
 
 #GLFLS {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -205px -300px;
 }
 
 #Knife2 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -305px -300px;
 }
 
 #ExplosiveRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -405px -300px;
 }
 
 #AcidRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -300px;
 }
 
 #NitrogenRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -300px;
 }
 
 #GLELC {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -300px;
 }
 
 #M3 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -300px;
 }
 
 #Hydra {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -300px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -300px;
 }
 
 #ProimityMines {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -305px -400px;
 }
 
 #HerbG {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -405px -400px;
 }
 
 #HerbR {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -400px;
 }
 
 #HerbGR {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -400px;
 }
 
 #PSG1 {
 	width: 98px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -400px;
 }
 
 #M5000 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -400px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -400px;
 }
 
 #M93R {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -500px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -500px;
 }
 
 #LHawk {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -500px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -500px;
 }
 
 #DragunovSVD {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -500px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -500px;
 }
 
 #AK74 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -600px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -600px;
 }
 
 #SamuraiEdge {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -600px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -600px;
 }
 
 #Knife3 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -205px -700px;
 }
 
 #Knife4 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -300px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -305px -700px;
 }
 
 #PX4 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -400px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -405px -700px;
 }
 
 #Flamethrower {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -700px;
 }
 
 #StunRod {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -700px;
 }
 
 #RL2 {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -700px;
 }
 
 #FlameRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -700px;
 }
 
 #FlashRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -700px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -700px;
 }
 
 #ElectricRounds {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -800px;
 }
 
 #EggRotten {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -500px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -505px -800px;
 }
 
 #EggWhite {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -600px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -605px -800px;
 }
 
 #EggBrown {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -700px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -705px -800px;
 }
 
 #EggGold {
 	width: 100px;
 	height: 97px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -800px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -805px -800px;
 }
 
 #RPGRound {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -900px -800px;
+	background: url(RE5/RE5_Item_Collection.png) -905px -800px;
 }
 
 #MeleeVest {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -100px -900px;
+	background: url(RE5/RE5_Item_Collection.png) -105px -900px;
 }
 
 #BulletproofVest {
 	width: 100px;
 	height: 100px;
-	background: url(https://cdn.discordapp.com/attachments/551840398016774193/854143023746777129/RE5Items.svg) -200px -900px;
+	background: url(RE5/RE5_Item_Collection.png) -205px -900px;
 }
